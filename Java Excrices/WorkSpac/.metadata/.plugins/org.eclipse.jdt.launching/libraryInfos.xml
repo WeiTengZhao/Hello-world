@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre" version="1.8.0_40">
+<bootpath>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\resources.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\rt.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\sunrsasign.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\jsse.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\jce.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\charsets.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\jfr.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\ext"/>
+<entry path="C:\windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+<libraryInfo home="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse" version="1.8.0_40">
+<bootpath>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\resources.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\rt.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\sunrsasign.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\jsse.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\jce.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\charsets.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\jfr.jar"/>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\ext"/>
+<entry path="C:\windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="E:\Shao\杂七杂八\课程应用\Java\Eclipse\eclipse-java-luna-SR2-win32-x86_64(安装包）\eclipse\jre\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

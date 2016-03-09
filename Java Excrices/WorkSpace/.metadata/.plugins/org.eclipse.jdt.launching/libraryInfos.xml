@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="E:\Shao\JDK" version="1.8.0_40">
+<bootpath>
+<entry path="E:\Shao\JDK\lib\resources.jar"/>
+<entry path="E:\Shao\JDK\lib\rt.jar"/>
+<entry path="E:\Shao\JDK\lib\sunrsasign.jar"/>
+<entry path="E:\Shao\JDK\lib\jsse.jar"/>
+<entry path="E:\Shao\JDK\lib\jce.jar"/>
+<entry path="E:\Shao\JDK\lib\charsets.jar"/>
+<entry path="E:\Shao\JDK\lib\jfr.jar"/>
+<entry path="E:\Shao\JDK\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="E:\Shao\JDK\lib\ext"/>
+<entry path="C:\windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="E:\Shao\JDK\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

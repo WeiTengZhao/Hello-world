@@ -1,0 +1,1 @@
+alert("从外部文件引入JavaScript");

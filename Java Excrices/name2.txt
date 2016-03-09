@@ -1,0 +1,14 @@
+import java.io.*;
+public class name2
+{
+ public static void main(String[] args)
+           throws IOException
+{
+    System.out.println("欢迎您，请输入您的名字：");
+    BufferedReader na2=new BufferedReader(new InputStreamReader(System.in));
+    String s;
+    while((s=na2.readLine()).length()!=0)
+    {System.out.println("您好,"+(s));}
+    //na.close();
+   }
+}

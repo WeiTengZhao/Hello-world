@@ -1,0 +1,26 @@
+public class Myarray
+{
+ public static void main(String[] args)
+   {
+    int myArray[][];           //声明二维数组
+    myArray=new int[5][10];     //创建二维数组
+    int total=0;
+    for(int i=0;i<myArray.length;i++)
+     for(int j=0;j<=myArray[i].length;j++)
+       myArray[i][j]=i*10+j;   //为每个元素赋值    
+    for(int i=0;i<myArray.length;i++)
+     for(int j=0;j<=myArray[i].length;j++)
+      total+=myArray[i][j];
+   System.out.print("数组中数的和是："+total);
+//往下是增强for的部分
+   total=0;
+for(int[] a:myArray)
+{for(int i:a)
+{total+=i;
+}
+System.out.print("数组中数的和是："+total);
+
+}
+  
+    }
+}     

@@ -1,0 +1,117 @@
+package student;
+
+public class student {
+	int Numb;
+	double Egrade;
+	double Cgrade;
+	double Mgrade;
+	double Total;
+	String Name;
+
+
+
+	public student(int numb,double egrade,double cgrade,double mgrade,String name){
+		Numb = numb;
+		Egrade = egrade;
+		Cgrade = cgrade;
+		Mgrade = mgrade;
+		Total =  sum();
+	    Name = name;
+	}
+	public student(){
+		this(000,0,0,0,"");
+	}
+	
+	public double sum(){
+		double total = Mgrade + Cgrade + Egrade;
+		return total;
+		
+	}
+	
+	public String getName(){
+		return Name;
+	}
+	public int getNumb(){
+		return Numb;
+	}
+	public double getEgrade(){
+		return Egrade;
+	}
+	public double getCgrade(){
+		return Cgrade;
+	}
+	public double getMgrade(){
+		return Mgrade;
+	}
+	public double getTotal(){
+		return Total;
+	}
+	
+	
+	public void setName(String name){
+		name = Name;
+	}
+	public void setNumb(int numb){
+		numb = Numb;
+	}
+	public void setEgrade(double egrade){
+		egrade = Egrade;
+	}
+	public void setCgrade(double cgrade){
+		cgrade = Cgrade;
+	}
+	public void setMgrade(double mgrade){
+		mgrade = Mgrade;
+	}
+	public void setTotal(){
+		Total = sum();
+		//total = Total;
+	}
+	
+	public String toString(){
+		return("姓名："+Name+"\n"+"学号为:"+Numb+"\n"+"数学："+Mgrade+"\n"+"计算机"+Cgrade+"\n"+"英语:"+Egrade+"\n"+"总分："+Total);
+	}
+	
+	
+	public double testScore(){
+		double testscore = getTotal()/3;
+		return testscore;
+	} 
+	
+	
+	public void compare(double a,double b){
+		if(a > b){
+			System.out.println("大于");
+		}
+		if(a < b){
+			System.out.println("小于");
+		}
+		if(a == b){ System.out.println("等于");
+		}
+	}
+	
+	public boolean equals(Object x){
+		return this == x;
+	}
+}
+
+==============================
+//测试类
+package student;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		student s = new student(95001,90,90,100,"Amy");
+		System.out.println(s);
+		
+		student s1 = new student(95001,90,90,90,"Kmy");
+		System.out.println(s1);
+		
+		s.compare(s.getTotal(),s1.getTotal());
+		//System.out.println(e);
+	
+	}
+
+}

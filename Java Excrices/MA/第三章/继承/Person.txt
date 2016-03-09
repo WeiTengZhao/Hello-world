@@ -1,0 +1,46 @@
+public class Person{
+	String name;
+	int age;
+	
+	Person(String _name,int _age){
+		name = _name;
+		age = _age;
+	}
+	Person(){
+		this(NULL,0);
+	}
+	public void setName(String _name){
+		name = _name;
+	}
+	public void setAge(int _age){
+		age = _age;
+	}
+	public String getName(){
+		return name;
+	}
+	public int getAge(){
+		return age;
+	}
+}
+
+public class Student extends Person{
+	String school;
+	public void setSchool(String _school){
+		school = _school;
+	}
+	public String getSchool(){
+		return school;
+	}
+}
+
+public class Test{
+	public static void main(String args[]){
+	Student s = new Student();
+	s.setName("Crazy Kid");
+	s.setAge(99);
+	s.setSchool("GXUN");
+	System.out.println(s.getName());
+	System.out.println(s.getAge());
+	System.out.println(s.getSchool());
+}
+}

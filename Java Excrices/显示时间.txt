@@ -1,0 +1,19 @@
+法一：
+package ShowTime;
+import java.util.*;
+
+public class showtime {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Date d = new Date() ;
+		System.out.println("当前时间为：");
+		System.out.println(d.getYear()+1900+"年"+"\t"+(d.getMonth()+1)+"月"+"\t"+(d.getDay()+3)+"日"+"\t"+"星期"+d.getDay()+"\n"+d.getHours()+"时"+d.getMinutes()+"分"+d.getSeconds()+"秒");
+
+
+	}
+
+}
+
+
+法二：
