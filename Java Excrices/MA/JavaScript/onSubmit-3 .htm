@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>onSubmit-3</title>
+		<Script Language = "JavaScript">
+			function check() {
+				if(document.test.t.value == "") {
+					alert("×Ö·û´®²»ÄÜÎª¿Õ!");
+					return false;
+				} 
+				else {return true;}
+			}
+		</Script>
+	</head>
+	<body>
+		<form name = "test" action = "01.htm" onSubmit = "JavaScript:return check();">
+			<input type = "text" name = "t">
+			<input type = "submit"  value = "Submit" >
+		</form>
+	</body>
+</html>
