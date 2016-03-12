@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>JavaScript内部类this</title>
+	</head>
+	<body>
+		<img src = "1465.jpg" onClick = "JavaScript:alert(this.src);">
+		</img>
+		<br>
+		<input type = "text" name = "t1" value = "ABCD" onClick = "JavaScript:cheak(this);">
+	</body>
+
+	<Script Language = "JavaScript">
+		function cheak(obj) {
+			if (obj.value == "") {
+				alert("不能为空值");
+			}
+			else {alert(obj.value);}
+		}
+	</Script>
+</html>

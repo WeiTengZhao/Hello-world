@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title> 确认框 Confirm </title>
+		<Script Language = "JavaScript">
+			function cheaker() {
+				if(confirm("确认跳转吗？")) {
+					document.t.submit();
+				}
+			}	
+		</Script>
+	</head>
+	<body>
+		<from name = "t" action = "01.htm" method = "post">
+			<input type = "button" name = "b1" value = "跳转至01.htm" onClick = "JavaScript:cheaker();">
+		</from> 
+	</body>
+</html>
