@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title> Matrix </title>
+	</head>
+	<body>
+		<canvas id = "myCanvas"  width = "768" height = "1024">
+			//创建黑色背景幕布
+			<Script type = "text/JavaScript">
+				var s = window.screen;
+				var c = document.getElementById("myCanvas");
+				var cxt = c.getContext("2d");
+				var YPosition = new Array(30).join(0).split("");
+				function drawn() {	
+					cxt.fillStyle = "rgba(0,0,0,0.08)";
+					cxt.fillRect(0,0,768,1024);
+					cxt.fillStyle = "#0F0";
+					YPosition.map( function(y,index){
+								var text = String.fromCharCode(1e2 * Math.random());
+								x = (index * 35 ) + 10;
+								cxt.fillText(text,x,y);
+								if ( y > (s.height + Math.random() * 1000)) {
+									YPosition[index] = 0;
+								}
+								else {
+									YPosition[index] = y + 10;	
+								}
+ 							}
+						     )
+						
+					
+				}
+				setInterval(drawn,30);
+			</Script>
+		</canvas>
+	</body>
+</html>
