@@ -1,0 +1,167 @@
+//实现 下拉条1 的选项影响 下拉条2 的选项
+
+<html>
+	<head>
+		<title> Relative </title>
+	</head>
+	<body>
+		<form>
+			<p><select id = "D1" size = "1" onChange = "JavaScript:change2();">
+				<option value ="BB"> BB </option>
+				<option value ="CA"> CA </option>
+				<option value ="DD"> DD </option>
+				<option value ="CL"> CL </option>
+				<option value ="CVL"> CVL </option>
+				<option value ="CV"> CV </option>
+				<option value ="SS"> SS </option>
+			</select>
+			<br>
+			<br>
+
+			<select id = "D2">
+				<option value =" ">--------------</option>
+				<option value =" ">--------------</option>
+				<option value =" ">--------------</option>
+				<option value =" ">--------------</option>
+				<option value =" ">--------------</option>
+				<option value =" ">--------------</option>
+				<option value =" ">--------------</option>
+				<option value =" ">--------------</option>
+				<option value =" ">--------------</option>
+				<option value =" ">--------------</option>
+				<option value =" ">--------------</option>
+			</select></p>
+		</form>
+		<Script type = "text/JavaScript">
+			function change2() {
+				var Drop1 = document.getElementById("D1");
+				var Drop2 = document.getElementById("D2");
+				if(Drop1.selectedIndex == 0) {
+					Drop2.length = 6;
+					Drop1.selectedIndex = 0;
+					Drop2.selectedIndex = 0;
+					Drop2.options[0].value = "Roma";
+					Drop2.options[0].text = "Roma";
+					Drop2.options[1].value = "Yamato";
+					Drop2.options[1].text = "大和";
+					Drop2.options[2].value = "Musashi";
+					Drop2.options[2].text = "武藏";
+					Drop2.options[3].value = "Bismarck";
+					Drop2.options[3].text = "Bismarck";
+					Drop2.options[4].value = "Iowa";
+					Drop2.options[4].text = "Iowa";
+					Drop2.options[5].value = "Nagato";
+					Drop2.options[5].text = "长门";
+				}
+
+				 if(Drop1.selectedIndex == 1) {
+					 Drop2.length = 6;
+					 Drop1.selectedIndex = 1;
+					 Drop2.selectedIndex = 0;
+					 Drop2.options[0].value = "Prinz";
+					 Drop2.options[0].text = "Prinz Eugen";
+					 Drop2.options[1].value = "Chokai";
+					 Drop2.options[1].text = "鸟海";
+					 Drop2.options[2].value = "Maya";
+					 Drop2.options[2].text = "摩耶";
+					 Drop2.options[3].value = "Atago";
+					 Drop2.options[3].text = "爱宕";
+					 Drop2.options[4].value = "Takao";
+					 Drop2.options[4].text = "高雄";
+					 Drop2.options[5].value = "Kako";
+					 Drop2.options[5].text = "加古";
+				}
+
+				if( Drop1.selectedIndex == 2) {
+					 Drop2.length = 6;
+					 Drop1.selectedIndex = 2;
+					 Drop2.selectedIndex = 0;
+					 Drop2.options[0].value = "Fubuki";
+					 Drop2.options[0].text = "吹雪";
+					 Drop2.options[1].value = "Shirayuki";
+					 Drop2.options[1].text = "白雪";
+					 Drop2.options[2].value = "Hatsuyuki";
+					 Drop2.options[2].text = "初雪";
+					 Drop2.options[3].value = "Miyuki";
+					 Drop2.options[3].text = "深雪";
+					 Drop2.options[4].value = "Murakumo";
+					 Drop2.options[4].text = "丛云";
+					 Drop2.options[5].value = "Isonami";
+					 Drop2.options[5].text = "矶波";
+				}
+
+				if( Drop1.selectedIndex == 3) {
+					 Drop2.length = 6;
+					 Drop1.selectedIndex = 3;
+					 Drop2.selectedIndex = 0;
+					 Drop2.options[0].value = "Yubari";
+					 Drop2.options[0].text = "夕张";
+					 Drop2.options[1].value = "Kuma";
+					 Drop2.options[1].text = "球磨";
+					 Drop2.options[2].value = "Tama";
+					 Drop2.options[2].text = "多摩";
+					 Drop2.options[3].value = "Kitakami";
+					 Drop2.options[3].text = "超级北上大人";
+					 Drop2.options[4].value = "Oi";
+					 Drop2.options[4].text = "大井";
+					 Drop2.options[5].value = "Kiso";
+					 Drop2.options[5].text = "木曾";
+				}
+
+				if( Drop1.selectedIndex == 4) {
+					 Drop2.length = 6;
+					 Drop1.selectedIndex = 4;
+					 Drop2.selectedIndex = 0;
+					 Drop2.options[0].value = "Chitose";
+					 Drop2.options[0].text = "千岁";
+					 Drop2.options[1].value = "Junyo";
+					 Drop2.options[1].text = "隼鹰";
+					 Drop2.options[2].value = "Hiyo";
+					 Drop2.options[2].text = "飞鹰";
+					 Drop2.options[3].value = "Ryujo";
+					 Drop2.options[3].text = "龙骧";
+					 Drop2.options[4].value = "Zuiho";
+					 Drop2.options[4].text = "瑞凤";
+					 Drop2.options[5].value = "Shoho";
+					 Drop2.options[5].text = "祥凤";
+				}
+
+				if( Drop1.selectedIndex == 5) {
+					 Drop2.length = 6;
+					 Drop1.selectedIndex = 5;
+					 Drop2.selectedIndex = 0;
+					 Drop2.options[0].value = "Akagi";
+					 Drop2.options[0].text = "赤城";
+					 Drop2.options[1].value = "Kaga";
+					 Drop2.options[1].text = "加贺";
+					 Drop2.options[2].value = "Hiryu";
+					 Drop2.options[2].text = "飞龙";
+					 Drop2.options[3].value = "Soryu";
+					 Drop2.options[3].text = "苍龙";
+					 Drop2.options[4].value = "Zuikaku";
+					 Drop2.options[4].text = "瑞鹤";
+					 Drop2.options[5].value = "Shoukaku";
+					 Drop2.options[5].text = "翔鹤";
+				}
+
+				if( Drop1.selectedIndex == 6) {
+					 Drop2.length = 6;
+					 Drop1.selectedIndex = 0;
+					 Drop2.selectedIndex = 0;
+					 Drop2.options[0].value = "I8";
+					 Drop2.options[0].text = "伊8";
+					 Drop2.options[1].value = "I58";
+					 Drop2.options[1].text = "伊58";
+					 Drop2.options[2].value = "U-511";
+					 Drop2.options[2].text = "U-555";
+					 Drop2.options[3].value = "I168";
+					 Drop2.options[3].text = "伊168";
+					 Drop2.options[4].value = "Maruyou";
+					 Drop2.options[4].text = "马路油";
+					 Drop2.options[5].value = "I19";
+					 Drop2.options[5].text = "伊19";
+				}
+			}
+		</Script>
+	</body>
+</html>
