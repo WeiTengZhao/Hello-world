@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<title>表单验证</title>
+		<Script type = "text/JavaScript" src ="Cheakdata.js"> </Script>
+	</head>
+
+    <body>
+    
+	      <form name ="form" action="01.htm" method="get" onSubmit = "JavaScript:return cheakdata()">
+              <table width="463" border="1">  <tr>
+                <th colspan="2" scope="col">表单验证</th>
+                </tr>
+              <tr>
+                <td width="94">用户名：</td>
+                <td width="353"><input type="text" name="username" value="" id ="T1" onBlur = "JavaScript:cheakusername() ">
+				<span id = "spenT1"> </span>		
+		</td>
+              </tr>
+              <tr>
+                <td>密码：</td>
+                <td><input type="password" name="psw1" value="" id ="P1" onBlur = "JavaScript:cheakpassworld1()">
+			<span id = "spenP1"> </span>	
+		</td>
+              </tr>
+              <tr>
+                <td>确认密码：</td>
+                <td><input type="password" name="psw2" value="" id ="P2" onBlur = "JavaScript:cheakpassworld2()">	
+			<span id = "spenP2"> </span>	
+ 		</td>
+              </tr>
+               <tr>
+                <td>性别：</td>
+                <td><input type="radio" name="sex" value="male" id ="C1"onBlur = "JavaScript:cheakcheck()">男		   			
+		    <input type="radio" name="sex" value="fmale" id ="C2">女
+                	<span id = "spenC1"> </span>	
+		</td>
+              </tr>
+               	<tr>
+			<td> 选择省份 </td>
+			
+			<td> <select name = "address" size = "1" id ="D1" onBlur = "JavaScript:cheakdrop()">
+					<option name ="address" value = "请选择"> 请选择省份 </option>
+					<option name ="address" value = "北京"> 北京 </option>
+					<option name ="address" value = "南宁"> 南宁 </option>
+					<option name ="address" value = "杭州"> 杭州 </option>
+					<option name ="address" value = "南京"> 南京 </option>
+					<option name ="address" value = "上海"> 上海 </option>
+					<span id = "spenD1"> </span>	
+				</select>
+			</td>
+		</tr>
+		<tr>
+                <td height="93">学习课程：</td>
+                <td><select name="lesson" size="5" multiple>
+                        <option name="lesson" value="VB">
+                        VB
+                        </option>
+                        <option name="lesson" value="PHP">
+                        PHP
+                        </option>
+                        <option name="lesson" value="C++">
+                        C++
+                        </option>
+                        <option name="lesson" value="JAVA">
+                        JAVA
+                        </option>
+                        <option name="lesson" value="C">
+                        C
+                        </option>
+                    </select>
+                </td>
+              </tr>
+              <tr>
+                <td height="160">简介</td>
+                <td><textarea name="" value="" rows="10" cols="40" id="Brief"></textarea>
+                <span id = "spenBrirf"> </span>	
+              </tr>
+              
+              <tr>
+              </td>
+                
+                <td>
+                    <input type="submit" name="submit" value="提交">	
+                </td> 
+                <td>
+                    <input type="button" name="quite" value="取消">	
+                </td>      
+              </tr>
+              
+              </table>
+        </form>
+    </body>
+</html>
