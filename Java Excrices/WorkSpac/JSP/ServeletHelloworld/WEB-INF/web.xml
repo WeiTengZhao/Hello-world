@@ -11,10 +11,18 @@
 		<servlet-name>ServerletHelloworld</servlet-name>
 		<servlet-class>ServerletHelloworld</servlet-class>
     	</servlet>
-		
 	<servlet-mapping>
 		<servlet-name>ServerletHelloworld</servlet-name>
 		<url-pattern>/HW</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>TestServletCircle</servlet-name>
+		<servlet-class>TestServletCircle</servlet-class>
+    	</servlet>
+	<servlet-mapping>
+		<servlet-name>TestServletCircle</servlet-name>
+		<url-pattern>/TestServletCircle</url-pattern>
 	</servlet-mapping>
 
 </web-app>
