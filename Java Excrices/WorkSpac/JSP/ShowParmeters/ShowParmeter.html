@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>A simple From using Post</title>
+</head>
+<body BGCOLOR = "#66CCFF">
+	<Center>
+	<H1> A simple From using Post </H1>
+	<form action="servlet/ShowParmeters" method="get">
+		ItemNumer:<input type="text" name="itemnumer" ID="itemnumer"><BR>
+		Quantity:<input type="text" name="quantity" ID="quantity"><BR>
+		Each Price:<input type="text" name="eachprice" ID="eachprice"><BR>
+		Address:<BR><textarea rows="10" cols="40" name="address" ID="address"></textarea>
+		<HR>
+		First name:<input type="text" name="firstname" ID="firstname"><BR>
+		Last name:<input type="text" name="lastname" ID="lastname"><BR>
+		Middle Initial:<input type="text" name="middleinitial" ID="middleinitial"><BR>
+		<HR>
+		Credit Card:<BR>
+			<input type="radio" name="cretype" value="visa">Visa<BR>
+			<input type="radio" name="cretype" value="express">Express<BR>
+			<input type="radio" name="cretype" value="discover">Discover<BR>
+			<BR>
+			<BR>
+		Credit Number:       <input type="password" name ="creditnumber" ID="creditnumber"><BR>
+		Repeat Credit Number:<input type="password" name ="creditnumber" ID="creditnumber"><BR>
+			<BR>
+			<Center>
+				<input type="submit" name="submit" value="Submit" ID="submit">
+			</Center>
+	</form>
+	</Center>
+</body>
+</html>

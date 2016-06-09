@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+  version="3.1"
+  metadata-complete="true">
+
+	<servlet>
+		<servlet-name>ServerletHelloworld</servlet-name>
+		<servlet-class>ServerletHelloworld</servlet-class>
+    	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServerletHelloworld</servlet-name>
+		<url-pattern>/HW</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>TestServletCircle</servlet-name>
+		<servlet-class>TestServletCircle</servlet-class>
+    	</servlet>
+	<servlet-mapping>
+		<servlet-name>TestServletCircle</servlet-name>
+		<url-pattern>/TestServletCircle</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ThreeParams</servlet-name>
+		<servlet-class>ThreeParams</servlet-class>
+    	</servlet>
+	<servlet-mapping>
+		<servlet-name>ThreeParams</servlet-name>
+		<url-pattern>/servlet/ThreeParams</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ShowParmeters</servlet-name>
+		<servlet-class>ShowParmeters</servlet-class>
+    	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowParmeters</servlet-name>
+		<url-pattern>/servlet/ShowParmeters</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SetCookie</servlet-name>
+		<servlet-class>SetCookie</servlet-class>
+    	</servlet>
+	<servlet-mapping>
+		<servlet-name>SetCookie</servlet-name>
+		<url-pattern>/servlet/SetCookie</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ShowCookie</servlet-name>
+		<servlet-class>ShowCookie</servlet-class>
+    	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowCookie</servlet-name>
+		<url-pattern>/servlet/ShowCookie</url-pattern>
+	</servlet-mapping>
+ 
+
+	<servlet>
+		<servlet-name>SetSessionServlet</servlet-name>
+		<servlet-class>SetSessionServlet</servlet-class>
+    	</servlet>
+	<servlet-mapping>
+		<servlet-name>SetSessionServlet</servlet-name>
+		<url-pattern>/servlet/SetSessionServlet</url-pattern>
+	</servlet-mapping>
+ 
+
+	<session-config>
+        
+		<session-timeout>1</session-timeout>
+    
+	</session-config>
+
+	<servlet>
+		<servlet-name>ShowSession</servlet-name>
+		<servlet-class>ShowSession</servlet-class>
+    	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowSession</servlet-name>
+		<url-pattern>/servlet/ShowSession</url-pattern>
+	</servlet-mapping>
+ 
+
+	<servlet>
+		<servlet-name>TestServletContext</servlet-name>
+		<servlet-class>com.Shao.TestServletContext</servlet-class>//ÀàÔÚ°üÄÚÂ·¾¶Ð´È«
+    	</servlet>
+	<servlet-mapping>
+		<servlet-name>TestServletContext</servlet-name>
+		<url-pattern>/servlet/TestServletContext</url-pattern>
+	</servlet-mapping>
+ 
+
+	<servlet>
+		<servlet-name>ShowRs</servlet-name>
+		<servlet-class>ShowRs</servlet-class>
+    	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowRs</servlet-name>
+		<url-pattern>/servlet/ShowRs</url-pattern>
+	</servlet-mapping>
+ 
+</web-app>
