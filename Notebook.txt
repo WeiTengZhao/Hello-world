@@ -105,4 +105,12 @@ JavaScript中alert方法弹出消息框
 2016-07-13 周三
 打开vim会显示"E:\Shao\杂七杂八\神奇的软件\vim\vim74\menu.vim"第357行有错，
 	直接用""注释掉那行就没有弹窗报错
+	
+	想将这个文本上传到git发现问题：
+		1.Git Bash存在中文乱码；
+		2.暂存的staged不能clean 使用git commit之后有红字显示<untracked files>
+
+	解决途径：
+		1.使用git config --globle gui.encoding utf-8或者在标题框右键选择“option”在“TEXT”选项中选择zh_CN UTF-8.
+		2.出现的原因因为使用了git add -a简单化，改成git add "指定文件名" 即可.(具体原因待查）
 ============================================================*/
