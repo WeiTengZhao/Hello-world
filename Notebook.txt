@@ -114,3 +114,55 @@ JavaScript中alert方法弹出消息框
 		1.使用git config --globle gui.encoding utf-8或者在标题框右键选择“option”在“TEXT”选项中选择zh_CN UTF-8.
 		2.出现的原因因为使用了git add -a简单化，改成git add "指定文件名" 即可.(具体原因待查）
 ============================================================*/
+
+/*===========================================================
+2016-07-13 周一 实习第一天
+1.app/src/main/res/layout/activity_my.xml 是新建Activity所对应的xml布局文件
+	当前Activity显示的文字内容，文本框等都在此设置。
+2.app/src/main/java/com.mycompany.myfirstapp/MyActivity.java
+是针对刚刚所创建的Activity类的各种定义，通过这个文件调用相应的xml布局文件，实现各种布局。
+3.app/src/main/AndroidManifest.xml
+真的整个项目（创建的APP）的基本特征的描述，例如APP名称，组成应用的各种组件等。
+4.app/build.gradle 是Android Studio编译环境的说明。其中具有以下几个关键字：
+	apply plugin://声明是Android程序
+	compileSdkVersion 23//编译SDK版本
+	buildToolsVersion "23.0.3"BuildTools版本
+	applicationId "com.example.administrator.myapplication"//创建项目时应用的包名
+	minSdkVersion 15//新建应用指定的最低支持的SDK版本
+	targetSdkVersion 23 //新建应用指定的最高支持的SDK版本
+	dependencies{}//编译目录下的jar包
+
+5.不同于Eclipse Android Studio将resources资源文件夹直接拆分，功能分别为：
+	drawable<density>/存放各种densities图像的文件夹，mdpi，hdpi等，这里能够找到应用运行时的图标文件ic_launcher.png
+	layout/存放用户界面文件，如前边提到的activity_my.xml，描述了MyActivity对应的用户界面。
+	menu/存放应用里定义菜单项的文件。
+	values/存放其他xml资源文件，如string，color定义。string.xml定义了运行应用时显示的文本"Hello world!"
+
+6.LinearLayout流水型布局，通过android:orientatiion属性来设置布局样式（水平或是垂直）
+============================================================*/
+
+/*============================================================
+2016-7-20 星期二 实习第二天
+在自己电脑配Android虚拟环境碰到些问题：
+1.无法进行虚拟化，VirtualBox Driver无法加载
+	解决途径：1、替换掉破解系统下的c:/windows/system32/uxtheme.all
+		  2、试着升级virtualBox
+2.Genymotin运行无法得到IP
+	解决途径：1、VirtualBox 全局设置（菜单——文件——全局）中的虚拟网卡是否与网络与共享中心里的一致
+		  2、创建的虚拟系统 网卡1 选择虚拟网卡1 并勾上连接网线；
+				    网卡2 选择NAT网络（默认是NAT地址转换 要改）
+============================================================*/
+
+/*===========================================================
+2016-7-21 星期三 实习第三天
+试着做了一个"民大新闻"APP
+回宿舍试着重新设置了一回Android Studio 的偏好设置：（File--setting)
+Font：设置Coding字体（要先保存自己的偏好）
+Appearance:设置侧边栏文件结构字体（勾上Override default font 即可）
+App 下拉菜单 Edit Configuration..可以设置运行模拟器(Emultor)或是真机（USB Device）
+AVD Manager 模拟器管理
+SDK Manager 就是管理你的SDK版本
+Keymap:配置快捷键
+Preferences -> Editor -> Auto Import：自动引入包
+http://stormzhang.com/devtools/2014/11/28/android-studio-tutorial2/
+===========================================================*/
