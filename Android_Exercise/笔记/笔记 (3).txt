@@ -1,0 +1,102 @@
+1.app/src/main/res/layout/activity_my.xml 是新建Activity所对应的xml布局文件
+	当前Activity显示的文字内容，文本框等都在此设置。
+2.app/src/main/java/com.mycompany.myfirstapp/MyActivity.java
+是针对刚刚所创建的Activity类的各种定义，通过这个文件调用相应的xml布局文件，实现各种布局。
+3.app/src/main/AndroidManifest.xml
+真的整个项目（创建的APP）的基本特征的描述，例如APP名称，组成应用的各种组件等。
+4.app/build.gradle 是Android Studio编译环境的说明。其中具有以下几个关键字：
+	apply plugin://声明是Android程序
+	compileSdkVersion 23//编译SDK版本
+	buildToolsVersion "23.0.3"BuildTools版本
+	applicationId "com.example.administrator.myapplication"//创建项目时应用的包名
+	minSdkVersion 15//新建应用指定的最低支持的SDK版本
+	targetSdkVersion 23 //新建应用指定的最高支持的SDK版本
+	dependencies{}//编译目录下的jar包
+
+5.不同于Eclipse Android Studio将resources资源文件夹直接拆分，功能分别为：
+	drawable<density>/存放各种densities图像的文件夹，mdpi，hdpi等，这里能够找到应用运行时的图标文件ic_launcher.png
+	layout/存放用户界面文件，如前边提到的activity_my.xml，描述了MyActivity对应的用户界面。
+	menu/存放应用里定义菜单项的文件。
+	values/存放其他xml资源文件，如string，color定义。string.xml定义了运行应用时显示的文本"Hello world!"
+
+6.LinearLayout流水型布局，通过android:orientatiion属性来设置布局样式（水平或是垂直）
+
+7.一些常见的属性：
+	android:id：定义view的唯一标识符，例如：android:id="@+id/唯一ID值"（"+"号只是在第一次创建id号时才使用，已经创建的直接通过"@"符引用，设置id时，不同类型资源设置相同id可以被接受）
+	android:layout_width 和android:layout_height:设置控件的宽和高，通常不指定具体值，只是使用wrap_content（占据内容大小空间）、match_parent（布满整个屏幕以适应父布局的大小）例如：android:layout_width:wrap_content
+	android:hint:设置文本框为空的时候，默认显示的字符串。
+
+8.res/values是资源文件夹，里面包含一些对资源文件的说明。例如string.xml就是字符串资源，当我们在用户界面定义一个文本的时候，应把每一个文本字符串列入资源文件，便于修改时在资源源文件中进行即可。把文本写在资源文件里，定义一个name属性（例子定义为：textView)在布局文件中再进行引用，例如：android:hint = "@string/textView"
+
+9.android:layout_weight：设置控件的权重。（如果只设置了一个View的权重大于0，则该View将占据除去别的View本身占据的空间的所有剩余空间。）
+
+10.Activity之间通过Intent传递数据。
+
+11.Action Bar 顶部的小工具栏，可以用来显示图标，标题，设置菜单栏，搜索等。定义在res/menu资源中。(通过在项目的 res/menu 目录中新增一个 XML 文件来为 action bar 添加操作)
+
+12.不同密度下的图像：
+	xhdpi: 2.0
+	hdpi: 1.5
+	mdpi: 1.0 (基准)
+	ldpi: 0.75
+	这意味着，如果针对xhdpi的设备生成了一张200x200的图像，那么应该为hdpi生成150x150,为mdpi生成100x100, 和为ldpi生成75x75的图片资源。
+	mdpi/hdpi/xhdpi/xxhdpi 比例 1:1.5:2:3
+
+13.可以在AndroidManifest.xml中定义作为主activity的activity
+
+14.隐式Intent通过对app/src/main/AndroidManifest.xml配置相应的<activity>标签下的<intent-filter>使用
+	包括两个属性：<action>和<category>使用时直接在Intent的构造函数中传递<action android:name>值
+15.使得LinerLayout 可以滚动，套上一个<ScrollView>:
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical"
+    >
+		<LinerLayout>....
+		</LinerLayout>
+	</ScrollView>
+
+16.设置一个3秒跳转的欢迎页：（加在onCreate的setContentView后）
+	new Handler().postDelayed(r,3000); //欢迎页自动跳转
+    }
+    Runnable r = new Runnable() {
+        @Override
+        public void run() {
+            Intent intent = new Intent(MainActivity.this,News_List.class);
+            startActivity(intent);
+            finish();
+        }
+    };
+
+17.获取ActionBar 对象：（在相应Activity 的.java中写）
+	ActionBar actionBar = getSupportActionBar();
+
+18.ActoonBar 最右边的三个点就是overflow按钮
+
+17.常用的XML转义字符记录如下：(编辑<string>文件会用到）
+ 
+         空格： <string name="out_bound_submit">出&#160;&#160;库</string> 其中的&#160;就代表空格
+ 
+       换行： <string name="hello_world">你好！\n世界！</string> 其中的\n就代表换行
+ 
+       缩进： <string name="hello_world">你好！\t世界！</string> 其中的\t就代表按一次Tab键的几个空格
+            应当注意，由于系统定义的基本的缩进的格数不同，有的代表4个半角字符，有的代表8个半角字符，          
+       所以可能显示时效果不同，建议如果编写界面时尽量少用。
+ 
+ 
+        "  ： &#34; 或 &quot; 
+         '   ： &#39; 或 &apos;
+        &  ：  &#38; 或 &amp;
+        lt(<)   ： &#60; 或 &lt;
+        gt(>)  ： &#62; 或 &gt;
+
+19.对TextView进行居中操作：
+	 有2种方法可以设置TextView文字居中：
+		一：在xml文件设置：android:gravity="center"
+		二：在程序中设置：m_TxtTitle.setGravity(Gravity.CENTER);
+			（备注：android:gravity和android:layout_gravity的区别在于前者对控件内部操作，后者是对整个控件操作。）
+			例如：android:gravity="center"是对textView中文字居中android:layout_gravity="center"是对textview控件在整个布局中居中
+其实很容易理解，出现"layout"就是控件对整个布局的操作
+
+20.Textview 设置加粗通过 android:gravity属性进行设置

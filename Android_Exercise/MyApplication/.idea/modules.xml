@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/listviewtest/listviewtest.iml" filepath="$PROJECT_DIR$/listviewtest/listviewtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testlayout/testlayout.iml" filepath="$PROJECT_DIR$/testlayout/testlayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uibestpractice/uibestpractice.iml" filepath="$PROJECT_DIR$/uibestpractice/uibestpractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uicustomviews/uicustomviews.iml" filepath="$PROJECT_DIR$/uicustomviews/uicustomviews.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uilayouttest/uilayouttest.iml" filepath="$PROJECT_DIR$/uilayouttest/uilayouttest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uisizetest/uisizetest.iml" filepath="$PROJECT_DIR$/uisizetest/uisizetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uiweidgettest/uiweidgettest.iml" filepath="$PROJECT_DIR$/uiweidgettest/uiweidgettest.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,409 @@
+1.app/src/main/res/layout/activity_my.xml 是新建Activity所对应的xml布局文件
+	当前Activity显示的文字内容，文本框等都在此设置。
+2.app/src/main/java/com.mycompany.myfirstapp/MyActivity.java
+是针对刚刚所创建的Activity类的各种定义，通过这个文件调用相应的xml布局文件，实现各种布局。
+3.app/src/main/AndroidManifest.xml
+真的整个项目（创建的APP）的基本特征的描述，例如APP名称，组成应用的各种组件等。
+4.app/build.gradle 是Android Studio编译环境的说明。其中具有以下几个关键字：
+	apply plugin://声明是Android程序
+	compileSdkVersion 23//编译SDK版本
+	buildToolsVersion "23.0.3"BuildTools版本
+	applicationId "com.example.administrator.myapplication"//创建项目时应用的包名
+	minSdkVersion 15//新建应用指定的最低支持的SDK版本
+	targetSdkVersion 23 //新建应用指定的最高支持的SDK版本
+	dependencies{}//编译目录下的jar包
+
+5.不同于Eclipse Android Studio将resources资源文件夹直接拆分，功能分别为：
+	drawable<density>/存放各种densities图像的文件夹，mdpi，hdpi等，这里能够找到应用运行时的图标文件ic_launcher.png
+	layout/存放用户界面文件，如前边提到的activity_my.xml，描述了MyActivity对应的用户界面。
+	menu/存放应用里定义菜单项的文件。
+	values/存放其他xml资源文件，如string，color定义。string.xml定义了运行应用时显示的文本"Hello world!"
+
+6.LinearLayout流水型布局，通过android:orientatiion属性来设置布局样式（水平或是垂直）
+
+7.一些常见的属性：
+	android:id：定义view的唯一标识符，例如：android:id="@+id/唯一ID值"（"+"号只是在第一次创建id号时才使用，已经创建的直接通过"@"符引用，设置id时，不同类型资源设置相同id可以被接受）
+	android:layout_width 和android:layout_height:设置控件的宽和高，通常不指定具体值，只是使用wrap_content（占据内容大小空间）、match_parent（布满整个屏幕以适应父布局的大小）例如：android:layout_width:wrap_content
+	android:hint:设置文本框为空的时候，默认显示的字符串。
+
+8.res/values是资源文件夹，里面包含一些对资源文件的说明。例如string.xml就是字符串资源，当我们在用户界面定义一个文本的时候，应把每一个文本字符串列入资源文件，便于修改时在资源源文件中进行即可。把文本写在资源文件里，定义一个name属性（例子定义为：textView)在布局文件中再进行引用，例如：android:hint = "@string/textView"
+
+9.android:layout_weight：设置控件的权重。（如果只设置了一个View的权重大于0，则该View将占据除去别的View本身占据的空间的所有剩余空间。使用权重的前提一般是给View的宽或者高的大小设置为0dp）
+
+10.Activity之间通过Intent传递数据。
+
+11.Action Bar 顶部的小工具栏，可以用来显示图标，标题，设置菜单栏，搜索等。定义在res/menu资源中。(通过在项目的 res/menu 目录中新增一个 XML 文件来为 action bar 添加操作)
+
+12.不同密度下的图像：
+	xhdpi: 2.0
+	hdpi: 1.5
+	mdpi: 1.0 (基准)
+	ldpi: 0.75
+	这意味着，如果针对xhdpi的设备生成了一张200x200的图像，那么应该为hdpi生成150x150,为mdpi生成100x100, 和为ldpi生成75x75的图片资源。
+	mdpi/hdpi/xhdpi/xxhdpi 比例 1:1.5:2:3
+
+13.可以在AndroidManifest.xml中定义作为主activity的activity
+
+14.隐式Intent通过对app/src/main/AndroidManifest.xml配置相应的<activity>标签下的<intent-filter>使用
+	包括两个属性：<action>和<category>使用时直接在Intent的构造函数中传递<action android:name>值
+
+15.使得LinerLayout 可以滚动，套上一个<ScrollView>:
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:fadingEdge="vertical"
+    >
+		<LinerLayout>....(若LinerLayout使用了权重，则不能添加滚动）
+		</LinerLayout>
+	</ScrollView>
+
+16.设置一个3秒跳转的欢迎页：（加在onCreate的setContentView后）
+	new Handler().postDelayed(r,3000); //欢迎页自动跳转
+    }
+    Runnable r = new Runnable() {
+        @Override
+        public void run() {
+            Intent intent = new Intent(MainActivity.this,News_List.class);
+            startActivity(intent);
+            finish();
+        }
+    };
+
+17.获取ActionBar 对象：（在相应Activity 的.java中写）
+	ActionBar actionBar = getSupportActionBar();
+	---------------------------------------------
+	显示ActionBar 的返回键：
+	actionBar.setDisplayHomeEnable(true);
+	actionBar.setDisplayHomeAsUpEnable(true);
+
+18.ActoonBar 最右边的三个点就是overflow按钮
+
+17.常用的XML转义字符记录如下：(编辑<string>文件会用到）
+ 
+         空格： <string name="out_bound_submit">出&#160;&#160;库</string> 其中的&#160;就代表空格
+ 
+       换行： <string name="hello_world">你好！\n世界！</string> 其中的\n就代表换行
+ 
+       缩进： <string name="hello_world">你好！\t世界！</string> 其中的\t就代表按一次Tab键的几个空格
+            应当注意，由于系统定义的基本的缩进的格数不同，有的代表4个半角字符，有的代表8个半角字符，          
+       所以可能显示时效果不同，建议如果编写界面时尽量少用。
+ 
+ 
+        "  ： &#34; 或 &quot; 
+         '   ： &#39; 或 &apos;
+        &  ：  &#38; 或 &amp;
+        lt(<)   ： &#60; 或 &lt;
+        gt(>)  ： &#62; 或 &gt;
+
+19.对TextView进行居中操作：
+	 有2种方法可以设置TextView文字居中：
+		一：在xml文件设置：android:gravity="center"
+		二：在程序中设置：m_TxtTitle.setGravity(Gravity.CENTER);
+			（备注：android:gravity和android:layout_gravity的区别在于前者对控件内部操作，后者是对整个控件操作。）
+			例如：android:gravity="center"是对textView中文字居中android:layout_gravity="center"是对textview控件在整个布局中居中
+其实很容易理解，出现"layout"就是控件对整个布局的操作
+
+20.Textview 设置加粗通过 android:gravity属性进行设置
+
+21.监听ActionBar左上角箭头后退：(重写onOptionsItemSelected方法)：
+	 @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {//android.R.id.home（指箭头）
+            onBackPressed();
+            return (true);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+22.改变Textview点击时文字的颜色：
+	在drawable中添加一个新的xml(要是selector文件）：
+	<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true" android:color = "#66CCFF"/>
+    <item android:state_pressed="true" android:color = "#66CCFF"/><!--点击文本时变化的颜色-->
+    <item android:state_selected="true" android:color ="#66CCFF"/>
+    <item android:color = "#808080"/><!--文本未被点击时显示的颜色-->
+</selector>
+
+23.使用隐式intent进行Activit跳转时，要在AndroidManifest.xml 中要跳转到的Activity中添加<action>和<category>：
+	<action>和<category>用作筛选条件，<action>为必须项，其android:name 属性定义为 "完整包名.自己定义部分"
+					  <category>可选，但即使不定义也要将android:name名定义为："android.intent.category.DEFAULT"
+	之后在出发跳转的页面的onCreate方法中添加 intent 对象，并使用intent.setAction(刚刚定义的andorid:name)和intent.setCategory(相应的android:name）获取事件
+	最后使用startActivity(intent)进行跳转。
+	例如，我要从MainActivity跳转到second_Activity，包名为：com.example.administrator.myapplication
+	
+	AndroidManifest.xml:
+		<activity
+            		android:name=".second_Activity"
+            		android:label="@string/title_activity_second_"
+            		android:theme="@style/AppTheme.NoActionBar"
+            	>
+           	 <intent-filter>	//自行添加到intent-filter>
+               	 	<action android:name = "com.example.administrator.myapplication.second_Activity" /> //要写完整包名
+                	<category android:name = "android.intent.category.DEFAULT"/>
+            	</intent-filter>
+        	</activity>
+	
+	MainActivity.java：
+			//在onCreate()方法相应的监听事件被出发时函数中：
+			Intent intent = new Intent();
+                	intent.setAction("com.example.administrator.myapplication.second_Activity");
+                	intent.addCategory( "android.intent.category.DEFAULT");
+                	startActivity(intent);
+
+24.调用浏览器打开相应的网站：
+	在相应的onClick方法中使用系统默认intent对象：
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://www.baidu.com"));//parse()将网址转成字符串，setData()将数据传递出去
+                startActivity(intent);
+
+25.可在AndroidMainfest.xml中的<intent-filter>标签设置<data>标签，用来规定当前Acttivity能够相应的数据类型
+
+26.Activityt跳转时数据传递：
+	Intent对象使用	putExtra(键值，实际数据)	方法来把当前Activity数据暂存在Intent中，当Activity跳转后，在新的Activity可以同过	getIntent（）	方法获取之前的Intent对象，在通过获取的Intent对象调用	getStringExtra(键值)	方法获取保存在Intent中的数据，实现Activity之间的数据传递。
+
+27.Activity 返回时的参数传递，用例子来说：（在相应的A1.java和A2.java操作）
+	假设我们现在从A1跳转到A2后，从A2回来，要获取A2的数据
+		我们要先在A1跳转至A2事件中调用	startActivityForResult(Intent对象，请求码）	方法指明要获取返回对象；
+		之后在A2回跳到A1的事件finish（）调用之前调用	setResult(RESULT_OK或者RESULT_CANCELED,Intent对象) 	，注意A2的Intent对象要先putExtra()存放数据；
+		最后重写A1中的		onActivityResult（请求码参数，RESULT_OK或者RESULT_CANCELED,Intent对象）	方法
+			重写内容一般是 switch(请求码参数)
+						case 请求码 ：if(RESULT_OK或者RESULT_CANNELED) {获取Extra}
+
+28.为Activity定义一个事件:（在相应的.java文件中的onCreate()方法中进行操作）
+	1.设置View相应的对象，例如	Button button = (Button)findViewById();
+	2.通过View对象设置相应的监听器，例如	button.setOnClickListener(new OnClickListener)...
+	
+29.在AndroidMainfest.xml中，相应的<activity android:theme>属性可以设置主题，例如 <activity android:theme = "@style/Theme.AppCompat.NoActionBar">
+
+30.临时数据的保存与取出：
+	1.保存：
+		通过重写onSaveInstanceState(Bundle outState)方法实现
+			例如：
+				protected void onSaveInstanceState(Bundle outState) {
+	super.onSaveInstanceState(outState);
+	String tempData = "Something you just type";
+	outState.putString("data_key",tempData);//putString(键值，内容)
+}
+	2.取出：(因为是onDestory()之后数据消失，再次启动在onCreate()要读数据，所以在onCreate()中取出）
+		直接使用saveInstanceState中的相应数据类型的方法进行取出
+			例如：
+				if(saveInstanceState != null) {
+					String tempData = saveInstanceState.getString("data_key");
+}
+
+31.查询当前在运行的Activity:
+	通过新建一个BaseActivity并让其他所有类继承它，在BaseActivity的onCreate()中调用Log.d("BaseActicity",getClass().getSimpleName()) 在Log中显示当前活动的Activity名称。
+
+32.
+android.util.AndroidRuntimeException: requestFeature() must be called before adding content 
+错误解决办法：
+	requestWindowFeature(Window.FEATURE_NO_TITLE);
+	setContentView(R.layout.);
+按顺序放。在可行的条件下，去掉requestWindowFeature(Window.FEATURE_NO_TITLE)
+
+33.简化代码的activityStart()的写法：
+	public static void actionStart(Context context, String data1, String data2) {
+		Intent intent = new Intent(context, SecondActivity.class);//设置要跳转的是SecondActivity
+		intent.putExtra("param1", data1);
+		intent.putExtra("param2", data2);
+		context.startActivity(intent);
+	}
+
+ 
+   actionStart()的使用：（在执行跳转的页面中加）
+		SecondActivity.actionStart(FirstActivity.this, "data1", "data2");
+
+34. <EditText>控件中使用:
+		android:hint 显示未输入时的文字
+		android:maxLines 指定可输入的最大行数
+		
+
+35.使用Toast 在MainActivity显示一个消息框：
+	Toast.makeText(MainActivity.this,inputText,Toast.LENGTH_LONG).show();
+	      参数说明：(显示的Activity,显示内容，时长Toast.LENGTH_LONG|Toast.LENGTH_SHORT）
+
+36.动态改变<ImageView>使用的方法：（在相应的.java文件中相应的事件触发时添加）
+	imageView.setImageResource(R.drawable.jelly_bean);//imageView 是 ImageView 得到id后的对象
+
+37.监听事件的两种写法：
+	第一种：(使用匿名类）
+		Button botton = (Button) findViewById(R.id.button);
+		botton.OnClickListener(new View.OnClickListener() {//到这步基本自动生成
+            		@Override
+            		public void onClick(View v) {
+			......
+			}
+		}
+	----------------------------------------------------------------------------------------
+	第二种：（实现接口）
+		public class MainActivity extends Activity impletements OnClickListener {
+			private Button button ;
+			protected void onCreate (Bundle saveInstanceState) {
+				super.onCreate(savedInstanceState);
+				setContentView(R.layout.activity_main);
+				button = (Button)finViewById(R.id.button);
+				button.setOnClickListener(this);
+			}
+			@OverWrite
+			public void onClick(View v) {
+				switch (v.getId()) {
+					case R.id.button :
+						......
+						break;
+					defult:
+						break;
+				}
+			}	
+		}
+		
+
+38.布局可以嵌套
+
+39.设置LinearLayout控件的android:padding属性 可控制LinearLayout内部控件距离其他控件之间的距离
+
+40.android：textstyle:可以设置文字效果（加粗、倾斜等）
+
+41.
+Android RelativeLayout 属性
+// 相对于给定ID控件
+android:layout_above 将该控件的底部置于给定ID的控件之上;
+android:layout_below 将该控件的底部置于给定ID的控件之下;
+android:layout_toLeftOf    将该控件的右边缘与给定ID的控件左边缘对齐;
+android:layout_toRightOf  将该控件的左边缘与给定ID的控件右边缘对齐;
+android:layout_alignBaseline  将该控件的baseline与给定ID的baseline对齐;
+android:layout_alignTop        将该控件的顶部边缘与给定ID的顶部边缘对齐;
+android:layout_alignBottom   将该控件的底部边缘与给定ID的底部边缘对齐;
+android:layout_alignLeft        将该控件的左边缘与给定ID的左边缘对齐;
+android:layout_alignRight      将该控件的右边缘与给定ID的右边缘对齐;
+// 相对于父组件
+android:layout_alignParentTop      如果为true,将该控件的顶部与其父控件的顶部对齐;
+android:layout_alignParentBottom 如果为true,将该控件的底部与其父控件的底部对齐;
+android:layout_alignParentLeft      如果为true,将该控件的左部与其父控件的左部对齐;
+android:layout_alignParentRight    如果为true,将该控件的右部与其父控件的右部对齐;
+// 居中
+android:layout_centerHorizontal 如果为true,将该控件的置于水平居中;
+android:layout_centerVertical     如果为true,将该控件的置于垂直居中;
+android:layout_centerInParent   如果为true,将该控件的置于父控件的中央;
+// 指定移动像素
+android:layout_marginTop      上偏移的值;
+android:layout_marginBottom 下偏移的值;
+android:layout_marginLeft 　　左偏移的值;
+android:layout_marginRight 　 右偏移的值;
+--------------------------------------------------------------------------------------------------------------
+example:
+android:layout_below = "@id/***"
+android:layout_alignBaseline = "@id/***"
+android:layout_alignParentTop = true
+android:layout_marginLeft = “10px”
+---------------------------------------------------------------------------------------------------------------
+
+42.AlerDialog用法：弹出提示框（写在相应的.java事件中）
+	AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);//构造
+                dialog.setTitle("Waring!");//设置标题内容
+                dialog.setMessage("Test for AlerDialog.");
+                dialog.setCancelable(false);//是否可以取消
+                //↓设置选择按钮并监听
+                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() { //确认事件是PositiveButton
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                dialog.setNegativeButton("Cannel", new DialogInterface.OnClickListener() { //取消事件是NegetiveButton
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                dialog.show();//显示
+
+43.ProgressDialog用法，带进度条的弹出提示框：
+	ProgressDialog.Builder dialog = new ProgreeDialog.Builder(MainActivity.this); //构造
+		dialog.setTitle("PrigressDialog"); //设置标题
+		dialog.setMessage("New Loding....");//设置内容
+		dialog.setCancelable(true); //返回键是否可以取消窗帘
+		dialog.show()//显示窗体，用dismiss（）方法用来使窗体消失
+
+44.<TableLayout>几个属性：
+	<TableRow>增加行，在行中加控件自动为一列
+	<TableLayout android:strechClumns = 0> //第0列的内容适应屏幕（0 1 2列，从0开始）
+	<TableRow android:layout_span = 2> //合并2列	
+
+45.在一个layout中引用别的layout文件：(相当于添加其他控件）
+	<include layout = @latouy/...>
+
+46.<ListView>基本使用方法：
+	(1).在layout.xml中添加<ListView></ListView>
+	(2).在显示的Activity的.java中的OnCreate()写：
+		ArrayAdapter<String> adaper = new ArrayAdapter<String>(MainActive.this,R.layout.item1,data); 
+			//构建Adaper，<String>使用泛型，根据数据源类型改变，三个参数分别指（显示的Activity,为item设置的布局样式，数据源）
+		ListView listview = (ListView) findViewById (R.id.listview); //获取ListView对象
+		listview.setAdapter(adapter);//为ListView设置Adapter
+
+47.动态加载布局文件：
+	使用LayoutInflater.from(context).inflate(加载布局的id，父布局)
+
+48.自定义Adapter写法范例（继承自ArrayAdepter,用的是自定义泛型Location）：P135
+	新建class：
+	public class LocationAdapter extends ArrayAdapter<Location> {
+    private int resourceId;
+    public LocationAdapter (Context context, int textViewResourceId, //重写父类构造方法
+                            List<Location> objects){
+        super(context,textViewResourceId,objects);
+        resourceId = textViewResourceId;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) { //重写getView()方法
+        Location location = getItem(position);					//获取当前的item实例
+        View view;
+	ViewHolder viewHolder;							//使用内部类ViewHolder获取布局对象并缓存，优化代码，避免每次重复获取
+		if(converView == null) {
+			view =  LayoutInflater.from(getContext()).inflate(resourceId,null);	//获取自定义的item.xml布局
+			viewHolder = new ViewHolder;						//没有缓存时，实例一个ViewHolder对象获取控件
+			viewHolder.textView = (TextView) view.findViewById(R.id.text_name);
+			viewHolder.image = (ImageView) view.findViewById(R.id.image_id);
+			view.setTag(viewHolder);						//将缓存放在view中
+		}else { 
+			view = convertView; //converView用于缓存加载过的布局，这样判断避免每次重复加载
+			viewHolder = (ViewHolder) view.getTag();//从新获取缓存的ViewHolder
+		}
+        viewHolder.textView.setText(location.getName());					//通过viewHolder对象对自定义布局的对象进行操作
+        viewHolder.imageView.setImageResource(location.getImageId());
+        return view;
+    }
+    
+   class ViewHolder {				//定义内部类ViewHolder
+	TextView textView;
+	ImageView imageView;
+   }
+}
+-------------------------------------------------------------------------------------------------------------------
+自定义Adapter使用方法：
+	在OnCreate()构建Adapter时使用自定的Adapter:
+		LocationAdapter locationadapter = new LocationAdapter<Location>(MainActivity.this,R.layout_item,list);
+			//通常数据源定义为List并通过函数初始化
+
+
+49.监听ListView的点击事件：
+	在出发事件的方法中ListView对象实现setOnItemListener()设置监听器
+	例如： listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+			......事件
+            }
+        });
+
+50.获取ListView中的item的数据：
+	1.重写getItem（）方法：
+		public Object getItem(int i) {
+        		return mlist.get(i).get("title");
+    		}
+	2.获取position：（在OnItemClick()方法中）
+		ListView listview = (ListView)parent;
+                String str = (String)listview.getItemAtPosition(position);
+
+51.ListView子View 的点击：
+	在自定义Adapter.java中写，由于缓存的ViewHolder已经得到了相应View的对象，直接使用viewHolder为相应的view设置OnClickLinstener监听器即可;
+	响应的子View xml要设置为：android:focusable="false"

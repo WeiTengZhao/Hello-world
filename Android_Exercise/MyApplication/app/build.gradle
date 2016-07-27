@@ -1,0 +1,34 @@
+//声明是Android程序
+apply plugin: 'com.android.application'
+
+android {
+    //编译SDK版本
+    compileSdkVersion 23
+//    BuildTools版本
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+//        应用的包名
+        applicationId "com.example.administrator.myapplication"
+        //新建应用指定的最低支持的SDK版本
+        minSdkVersion 15
+        //新建应用指定的最高支持的SDK版本
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {//是否进行混淆
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //编译目录下的jar包
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+}
