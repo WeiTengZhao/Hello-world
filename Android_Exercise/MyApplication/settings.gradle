@@ -1,1 +1,1 @@
-include ':app', ':uiweidgettest', ':testlayout', ':uilayouttest', ':uicustomviews', ':listviewtest', ':uisizetest', ':uibestpractice'
+include ':app', ':uiweidgettest', ':testlayout', ':uilayouttest', ':uicustomviews', ':listviewtest', ':uisizetest', ':uibestpractice', ':broadcasttest', ':brocasttest2'
