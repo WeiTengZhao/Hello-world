@@ -705,4 +705,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent("com.example.broadcasttest");	//自己定义的Action名，在写广播接受器时注意对应
                 sendBroadcast(intent);
             }
+
+65.运行APP程序时覆盖原有APP：
+	检查一下app\build.gradle文件里的applicationId是否与其他App存在冲，冲突则会覆盖
         });	

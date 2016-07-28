@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.0.0_7c8de30b0e3d35f039bfb4125fe8c208b42cf71d.jar" />
+    </item>
+    <item
+        jar="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\pre-dexed\debug\internal_impl-24.0.0_36c20a47db7fc79cb63fd510600466f048ed494d.jar" />
+    </item>
+    <item
+        jar="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="90bcc54cfe25c521a0a94937e78826dd5557900e">
+        <dex dex="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\pre-dexed\debug\instant-run-bootstrap_2236960b1249f33b557a578a5ed83c017b078f44.jar" />
+    </item>
+    <item
+        jar="C:\Users\Administrator\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\24.0.0\2943c74db6d4346ab8c6531adac91fa05c137c40\support-annotations-24.0.0.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\pre-dexed\debug\support-annotations-24.0.0_170a33ba025e7388493b8e76c041cf4d64a29a8a.jar" />
+    </item>
+    <item
+        jar="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.0.0_5b09e6dbf2212f8c2998577adcbed99e7aba2bc7.jar" />
+    </item>
+    <item
+        jar="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-24.0.0_6be58c33c1277e104ee1e44ed4378ef1f6980d73.jar" />
+    </item>
+    <item
+        jar="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="43f92c3999acb3025992fabe06a34d92f7c6ff66">
+        <dex dex="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\pre-dexed\debug\instant-run_ee7c16580b40a0cd2b202b4967da66c5b46b0fdc.jar" />
+    </item>
+    <item
+        jar="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="E:\Shao\Android_Exercise\HelloWorld\activitytest\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-24.0.0_1ce605008878c3f509ddd745111b285891d142f6.jar" />
+    </item>
+
+</items>
