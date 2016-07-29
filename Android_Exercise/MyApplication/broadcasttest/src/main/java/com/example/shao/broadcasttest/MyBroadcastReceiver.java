@@ -12,5 +12,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Toast.makeText(context,"收到了广播com.example.broadcasttest",Toast.LENGTH_LONG).show();
+        //abortBroadcast();
     }
 }

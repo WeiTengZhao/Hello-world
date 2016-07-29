@@ -440,6 +440,33 @@ android:layout_marginLeft = “10px”
  		   	public void onScrollStateChanged(AbsListView view, int scrollState) {
             			int visiblelastitem = mAdapter.getCount() - 1; //获取最后一项数据索引
            			int lastindex = visiblelastitem + 1 ; //前面最后加了一个Button所以要加1
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.example.shao.broadcasttest"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+}
             			if (visibleLastIndex == lastindex && scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) { //SCROLL_STATE_TDLE表示滑动停止了
                 					....（事件响应）
             			}
@@ -522,6 +549,33 @@ android:layout_marginLeft = “10px”
 
 	方法（2）：不继承TabActivity,直接在XML中哦使用<TabHost>控件，再在MainActivity.java中获取TabHost的id创建对象
 		在main_layout.xml中写：
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.example.shao.broadcasttest"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+}
 			<TabHost
 				android:id = "@+id/tabhost"
 				...
@@ -700,12 +754,104 @@ public class MainActivity extends AppCompatActivity {
 64.发送自定义广播：
 	通过在相应的触发事件的Intent对象进行发送（如在onClick事件触发时）：
 		button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent("com.example.broadcasttest");	//自己定义的Action名，在写广播接受器时注意对应
-                sendBroadcast(intent);
-            }
-
+            	@Override
+            		public void onClick(View v) {
+                	Intent intent = new Intent("com.example.broadcasttest");	//自己定义的Action名，在写广播接受器时注意对应
+                	sendBroadcast(intent);
+            		}
+		});
 65.运行APP程序时覆盖原有APP：
 	检查一下app\build.gradle文件里的applicationId是否与其他App存在冲，冲突则会覆盖
-        });	
+        	
+66.发送有序广播的方法:
+	（1）发送事件使用sendOrderedBroadcast(Itent对象，权限字符串可为null) 方法
+	（2）在接收器注册的<intent-filter android:priority = "100" >设置优先级，数字越高优先级越高
+	（3）如某个接收器要截断有序广播，在接收器的onReceive()中添加abortBroadcast()方法
+
+67.使用内部广播：
+	（1）与动态注册广播类似，但要通过LocalBrocastManager.getInten(this) 获取LocalBrocastManager实例 localBrocastManager
+	（2）广播的 注册 localBrocastManager.registerReceiver()
+		    取消注册 localBrocastManager.unregisterReceiver()
+		    发送广播 localBrocastManager.sendBroadcast(intent)
+		都通过 localBrocastManger进行
+	（3）与同态注册相同，接受器写作内部类中
+
+68.将数据存储到文件中：(默认输出路径在 data/data/包名/file/... 通过DDMS可以查看)
+	（1）定义一个FileOutputStream参数，通过openFileOutput("保存的文件名",Context.MODE_PRIVATE|Context.MODE_APPEND)方式获取流对象，第二个参数两个值指覆盖已有文件|在已有文件中添加;
+	（2）通过刚刚获取的流对象建立输出流对象，进行输出流操作;
+--------------------例如--------------------------------------------------
+		public void save (String inputText) {
+			FileOutputStream out = null;
+			BufferWriter writer = null;
+			try {
+				out = openFileOutput("data",Context.MODE_APPEND);	//获取流对象，存储在名为"data"的文件中，不覆盖原有文件
+				writer = new BufferWriter(new OutStreamWriter(out); //将流对象定义为输出流
+				writer.write(inputText);			//进行输出流操作
+			}catch (IOException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if ( write != null ) {
+						write.close();	
+					}	
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+----------------------------------------------------------------------------
+
+69.从文件中读取数据：(默认读取路径：data/data/<包名>/file/文件名...)
+	（1）定义一个FlieInputStream参数，通过openFileInput("文件名")方法获取流对象
+	（2）通过获取的流对象建立输入流对象，进行读取操作;
+******************************************例子：当要在onCreate()读取**********************************************************************
+	onCreate()方法中：
+		EditText edit = (Edit) findViewById (R.id.edit_text);//获取输入位置的对象，此处往一个EditText输入内容
+		String inputtext = load(); //通过load()函数读入内容
+		if(!TextUnit.isEmpty(inputtext)) {	//判断从load()读入的内容是否空，TextUnit.isEmpty()可同时判断空类型和空串
+			edit.setText(inputtext);	//向控件输入内容
+			edit.setSelection(inputtext.length()); //选择串尾
+			...其他操作
+		}
+-----load()方法
+	public String load() {
+		FileInputStream in = null;
+		BufferReader reader = null;
+		StringBuilder content = new StringBuilder();//使用String缓冲对象输入数据
+		try {
+			in = openFileInput("data");//获取输入流对象，指定文件名为"data"		
+			reader = new BufferReader(new InputStreamReader(in)); //使用输入流对象in构建流操作对象，进行输入流操作
+			String line = "";		//临时读取存放参数
+			while ( (line = reader.readLine()) != null ) {	//读一行文件判空
+				content.apped(line);	//使用String缓冲对象在已有String末尾添加新串	
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}final {
+			try {
+				if( read != null) {
+					reader.close();
+				}
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+*****************************************************************************************************************************************
+
+70.使用SharedPreference存储数据：（路径为：data/data/<包名>/shared_pre/文件名）
+	1.通过SharePreference对象（三个获取方法直接.edit())获取SharePreference.Editor对象;
+	2.使用SharePreference.Editor 对象添加数据(根据类型不同putString、putInt等)
+	3.使用SharePreference.Editor 对象调用commit()方法提交添加到数据
+		例子：
+			SharePreference.Editor editor = getSharedPreferences("data",MODE_PRIVETE).edit();	//获取SharePreference.Editor 对象editor 文件名为"data",操作模式为本应用可操作
+			editor.putString("name","Yamato");							//添加数据，是通过"键——值"对进行保存，所以第一参为String
+			editor.commit();									//提交数据
+
+71.使用SharedPreference读取数据：
+	1.先获取SharePreference对象
+	2.使用SharePreference对象 的(getString、getInt()方法获取数据）
+		例子：
+			SharePreference pref = getSharePreferences("data,MODE_PRIVETE);
+			String s = pref.getString("name","");								//第一个参数是键名称，第二个参数采用默认值，String空，int 0
+			

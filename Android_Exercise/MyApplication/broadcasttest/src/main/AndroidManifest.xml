@@ -6,13 +6,16 @@
     <application android:allowBackup="true" android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name" android:supportsRtl="true" android:theme="@style/AppTheme">
         <receiver android:name=".BootCompleteReceiver"><!--注册广播-->
-            <intent-filter>                             <!--定义广播接收的Action-->
+            <intent-filter
+                >                             <!--定义广播接收的Action-->
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
 
         <receiver android:name=".MyBroadcastReceiver">
-            <intent-filter>
+            <intent-filter
+                android:priority="100"
+                >
                 <action android:name="com.example.broadcasttest"/>
             </intent-filter>
         </receiver>
