@@ -5,16 +5,18 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="E:\Shao\Android\gradle\gradle-2.10" />
+        <option name="gradleHome" value="C:\Program Files\Android\Android Studio\gradle\gradle-2.10" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/androidthreadtest" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/broadcasttest" />
             <option value="$PROJECT_DIR$/brocastbestpractice" />
             <option value="$PROJECT_DIR$/brocasttest2" />
             <option value="$PROJECT_DIR$/filepersistencetest" />
             <option value="$PROJECT_DIR$/listviewtest" />
+            <option value="$PROJECT_DIR$/servicetest" />
             <option value="$PROJECT_DIR$/sharedpreferences" />
             <option value="$PROJECT_DIR$/testlayout" />
             <option value="$PROJECT_DIR$/uibestpractice" />
@@ -27,12 +29,14 @@
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/androidthreadtest" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/broadcasttest" />
             <option value="$PROJECT_DIR$/brocastbestpractice" />
             <option value="$PROJECT_DIR$/brocasttest2" />
             <option value="$PROJECT_DIR$/filepersistencetest" />
             <option value="$PROJECT_DIR$/listviewtest" />
+            <option value="$PROJECT_DIR$/servicetest" />
             <option value="$PROJECT_DIR$/sharedpreferences" />
             <option value="$PROJECT_DIR$/testlayout" />
             <option value="$PROJECT_DIR$/uibestpractice" />

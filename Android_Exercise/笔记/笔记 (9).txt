@@ -855,3 +855,104 @@ public class MainActivity extends AppCompatActivity {
 			SharePreference pref = getSharePreferences("data,MODE_PRIVETE);
 			String s = pref.getString("name","");								//第一个参数是键名称，第二个参数采用默认值，String空，int 0
 			
+
+72.异步消息处理方法：
+	1.定义整形常量，用于表示更新动作；
+	2.新增一个Handler对象，重写handleMessage方法，对具体的Message进行处理，例如：
+	private Handler handler = new Handler() {
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+				case 常量 :
+					....相应动作处理	
+			}
+		}
+	}
+	3.在监听触发事件中创建新线程：
+		public void onClick (View view) {
+			MyThread mythread = new MyThread();
+			new Theread (mythread).start();
+		}
+	4.在run方法中发送Message:子线程要进行UI操作就要创建一个Message对象
+		class MyThread implements Runnable {
+			public void run() {
+				Message message = new Message();
+				message.what = 常量;
+				handler.sendMessage(message);//发送Message对象，sendMessage()方法发出的方法最终会传递到handleMessage()方法中
+			}
+		}
+
+73.使用AsyncTask进行多线程操作：
+	创建子类继承AsyncTask:
+		重写onPreRxecute()	//后台任务开始执行前调用
+		    doInBackground()	//用于处理耗时任务
+		    onProgressUpdate()	//接受上个方法中publishProgress()发出的参数，对UI进行操作
+		    onPostExecute()	//后台任务处理完毕后调用，可进行关闭对话框等操作
+	例：
+	class DownloadTask extends AsyncTask<Void,Integer,Boolean> {
+		protected void onPreExecute() { //开始前调用，显示对话框
+			progressDialog.show();
+		}
+		
+		protected Boolean doInBackground() {  //后台处理函数
+			....后台进行的内容
+			publishProgress(downloadPercent);//发对UI操作的参数
+			return true;//返回boolean表示后台处理结束
+		}
+
+		protected void onPressUpdate() {     //更新UI
+			
+		}
+
+		protected coid onPostExecute() {  //后台运行结束后收尾工作
+				各种关闭操作
+		}
+	}
+	
+74.Servier使用方法：
+	1.写一个外部类MyService，继承自Service.
+		其中有一些需要重写的方法：
+			(1) onBind()		//必须重写的方法
+			(2) onCreate()		//Service创建时调用
+			(3) onDestroy()		//Service 关闭时调用
+			(4) onStartCommand()	//只要启动Service就会调用
+	2.使用Intent对象打开或关闭Service:
+		例：打开：Intent intent_start = new Intent(MainActivity.this,MyService.class);
+			  startService(intent_start);
+		    关闭：Intent intent_end = new Intent(MainActivity.this,MyService.class);
+			  stopService(intent_end);
+	3.在AndroidMainfist.xml中注册:
+		<service android:name = ".MyService" />			//与<activity>同级
+
+75.Servier与Activity的通信（即在Activity中调用服务的方法）:
+	1.在新建的外部类中（MyService）新建一个继承自Binder的类，Activity中要调用的Service方法全部写在这个类中
+	2.生成上面新类的实例，在onBinder()方法中返回该实例
+	3.在要调用Servive的Activity中获取新类的实例(MyService.DownloadBinder downloadbinder)
+	4.创建ServiceConnect的匿名类，用于和Service绑定：(会要重写两个方法，一个是onServiceConnected,一个是onServiceDisconnected)
+		private ServiceConnection connetion = new ServiceConnection() {
+			public void onServiceConnected(ComponentName name,IBinder service) {
+				downloadBinder = (MyService.DownloadBinder) service;
+				downloadBinder.startDownload();//绑定相应的方法
+			}
+		}
+	5.在相应的触发事件中，使用Intent对象绑定或者解绑
+		绑定：Intent bind = new Intent(MainActivity.this,MyService.class);
+		      bindService(bind,connetion,BIND_AUTO_CREATE);//三个参数：Intent对象，匿名类绑定实例，标志位（当前标志位指绑定后自动创建服务）
+		解绑:unbindService(connetion);
+
+76.使用IntentService:(创建一个异步的、能自动停止的服务）：
+	1.类似于使用Service，先创建一个继承自IntentService的类
+		例如 ：public class MyIntentService extends IntentService {
+				public MyIntentService(){	//添加一个构造方法
+					super("MyIntentService");
+				}
+			
+				onHandleIntent() {	//重写onHandleIntent()方法，要在子线程处理的内容放在这里
+					...异步处理内容
+				}
+				...其他onDestroy(),onCreate()同Service了
+			}
+	2.与Service相同，使用Intent的startService()和stopService()方法开关服务
+	3.也要对此服务进行注册
+
+77.获取AlarmManager实例：
+	AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
