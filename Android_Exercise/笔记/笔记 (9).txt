@@ -387,7 +387,7 @@ android:layout_marginLeft = “10px”
 
 
 49.监听ListView的点击事件：
-	在出发事件的方法中ListView对象实现setOnItemListener()设置监听器
+	在触发事件的方法中ListView对象实现setOnItemListener()设置监听器
 	例如： listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -440,33 +440,6 @@ android:layout_marginLeft = “10px”
  		   	public void onScrollStateChanged(AbsListView view, int scrollState) {
             			int visiblelastitem = mAdapter.getCount() - 1; //获取最后一项数据索引
            			int lastindex = visiblelastitem + 1 ; //前面最后加了一个Button所以要加1
-apply plugin: 'com.android.application'
-
-android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
-
-    defaultConfig {
-        applicationId "com.example.shao.broadcasttest"
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
-}
             			if (visibleLastIndex == lastindex && scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) { //SCROLL_STATE_TDLE表示滑动停止了
                 					....（事件响应）
             			}

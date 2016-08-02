@@ -31,6 +31,7 @@
             android:theme="@style/Theme.AppCompat.Light"
             android:icon="@mipmap/icon"
             android:label="@string/app_news_content_title1"
+            android:launchMode="singleTask"
             >
         </activity>
 
