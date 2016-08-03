@@ -929,3 +929,52 @@ public class MainActivity extends AppCompatActivity {
 
 77.获取AlarmManager实例：
 	AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+ 
+78.ViewPager使用方法：(类似于ListView):
+	1.在相应的xml中添加 <ViewPager></ViewPager>控件
+	2.写ViewPagerAdapter继承自PagerAdapter
+		范例：
+			public class ViewPagerAdapter extends PagerAdapter{
+   	 			List<View> mviewlist = null;	//泛型为View个可以直接将布局文件放入List中
+
+    				public ViewPagerAdapter(List<View> mviewlist) {
+        			this.mviewlist = mviewlist;
+    				}
+
+    				@Override
+    				public int getCount() {
+        				return mviewlist.size();
+    				}
+
+   				@Override
+    				public Object instantiateItem(ViewGroup container, int position) {
+        				((ViewPager) container).addView(mviewlist.get(position));
+        				return mviewlist.get(position);
+    				}
+
+    				@Override
+    				public boolean isViewFromObject(View view, Object object) {
+        				return view == object;
+    				}
+
+    				@Override
+    				public void destroyItem(ViewGroup container, int position, Object object) {
+        				((ViewPager) container).removeView(mviewlist.get(position));
+					//super.destroyItem(container, position, object);
+    				}
+
+			}
+	3.在onCreate中加载：
+		范例：
+			（1）View v1 = getLayoutInflater.Inflate(R.layout.layout1,null); //获取布局
+			（2）ListView viewList = new ArrayList<View>();
+				viewList.add(v1);	//将布局加入到数组中当作数据源，以上是准备数据阶段
+			（3）ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);	//获取viewPager对象
+			     mpagerAdapter = new ViewPagerAdapter(viewList);//使用构造方法，构造Adapter
+			     viewPager.setAdapter(mpagerAdapter);	//设置Adapter
+			     viewPager.setCurrenItem(0);		//默认当前选中第一页
+	
+
+79.复用Adapter每次都要重新创建。
+
+80.cd - 可以返回上次所在的目录
