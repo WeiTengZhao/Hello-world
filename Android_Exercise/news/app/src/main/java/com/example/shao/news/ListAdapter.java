@@ -60,6 +60,11 @@ public class ListAdapter extends BaseAdapter {
         }
         viewHolder.title.setText(mlist.get(position).get("title"));//通过mlist设置ListView文本内容
         viewHolder.context.setText(mlist.get(position).get("context"));
+        try {
+            viewHolder.imageView.setImageResource(Integer.parseInt(mlist.get(position).get("image")));
+        }catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
         return v;
     }
 

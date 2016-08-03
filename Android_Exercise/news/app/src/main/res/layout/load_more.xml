@@ -9,5 +9,6 @@
         android:id="@+id/progressbar"
         style="@android:style/Widget.ProgressBar"
         android:visibility="invisible"
+        android:layout_gravity="center_horizontal"
         />
 </LinearLayout>

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -24,13 +26,23 @@ import java.util.List;
 import java.util.Map;
 
 public class News_List extends AppCompatActivity implements AbsListView.OnScrollListener {
-    private ListView mlistView;
+    private ListView mlistView1;
+    private ListView mlistView2;
+    private ListView mlistView3;
+    private ListView mlistView4;
+
     private ListAdapter madapter;
+    private PagerAdapter mpagerAdapter;
+    private ViewPager viewPager;
     private int visibleItemCount;//可视的Item数目
     private int visibleLastIndex = 0;//最后可视索引
-    private View LoadMoreView;
+    private View image_item;
+    private View v1;//ViewPager第一个页面
+    private View v2;//ViewPager第二个页面
+    private View LoadMoreView;//底部载入进度条
     private Handler handler = new Handler();//Handler对象，用于定义多线程操作
     private ProgressBar progressBar;
+    private List<View> viewList;
     private List<Map<String,String>> mapList;
     private String[] str = {"DMM","横须贺镇守府",
             "吴镇守府","佐世保镇守府","舞鹤镇守府","大凑警备府",
@@ -44,6 +56,8 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
             "TTT","III", "OOOO","QQQQ",
             "RRRR","WWWW","QAWEAQRDF","2DFEQQQ","岩川基地",
             "DJJK","DFDSXX"};//测试数据源
+    private Integer[] image = {R.drawable.d1,R.drawable.d2,
+            R.drawable.d3,R.drawable.d4,R.drawable.d5,R.drawable.d6};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,60 +67,29 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
         //actionBar.setDisplayHomeAsUpEnabled(true);显示ActionBar的箭头
         actionBar.setDisplayUseLogoEnabled(true);//显示图标
         actionBar.setIcon(R.mipmap.icon);//设置ActionBar图标
-        initView(str);     //调用初始化数据的方法
 
+        initView(str,image);     //调用初始化数据的方法
+        //设置底部载入栏
         LoadMoreView = getLayoutInflater().inflate(R.layout.load_more,null);
         progressBar = (ProgressBar) LoadMoreView.findViewById(R.id.progressbar);
-
-        mlistView.addFooterView(LoadMoreView);//增加下滑时底部显示的ProgressBar
-        mlistView.setOnScrollListener(this);//设置下滑监听器
-
-        final TabHost tabhost = (TabHost) findViewById(R.id.tabhost);
-        tabhost.setup();//启动并添加TAB
-        tabhost.addTab(tabhost.newTabSpec("t1").setIndicator(changeTabWight("新闻",R.mipmap.ic_launcher)).setContent(R.id.tab01));
-        tabhost.addTab(tabhost.newTabSpec("t2").setIndicator(changeTabWight("图片",R.mipmap.ic_launcher)).setContent(R.id.tab02));
-        tabhost.addTab(tabhost.newTabSpec("t3").setIndicator(changeTabWight("视频",R.mipmap.ic_launcher)).setContent(R.id.tab03));
-        tabhost.addTab(tabhost.newTabSpec("t4").setIndicator(changeTabWight("更多",R.mipmap.ic_launcher)).setContent(R.id.tab04));
-        initcolor(tabhost);//初始化Tab背景色
-        tabhost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-                updatecolor(tabhost);//监听Tab更换事件，改变背景色
-                switch (tabId) {
-                    case "t2" :
-                            break;
-                    case "t1" :
-                            break;
-                    case "t3" :
-                            break;
-                    case "t4" :
-                            break;
-                }
-            }
-        });
-    }
-
-    public void initView(String[] str) {
-        mapList = new ArrayList<>();//获取数据源的内容
-        for(int i = 0; i < 21 ; i ++) {
-            Map<String ,String> data = new HashMap<>();
-            if (i < str.length) {
-                data.put("title","Title:" + i);
-                data.put("context",str[i]);
-            }else {
-                data.put("title","Title:" + i);
-                data.put("context","AAA");
-            }
-            mapList.add(data);
-        }
+        //ViewPager载入布局
+        v1 = getLayoutInflater().inflate(R.layout.layout1,null);
+        v2 = getLayoutInflater().inflate(R.layout.layout2,null);//获取布局
+        viewList = new ArrayList<View>();
+        viewList.add(v1);
+        viewList.add(v2);
+        //获取ListView的适配器Adapter
         madapter = new ListAdapter(News_List.this,mapList,R.layout.list_item);//调用构造方法初始化Adapter
-        mlistView = (ListView) findViewById(R.id.list1_item);
-        mlistView.setAdapter(madapter);//加载适配器
-        mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() { //点击事件
+
+        mlistView1 = (ListView) findViewById(R.id.list1_item);
+        mlistView4 = (ListView)findViewById(R.id.list4_item);
+        mlistView3 = (ListView)findViewById(R.id.list3_item);
+        mlistView1.setAdapter(madapter);//加载适配器
+        mlistView1.setOnItemClickListener(new AdapterView.OnItemClickListener() { //点击事件
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) { //根据点击不同的item,跳转不同的内容
-                   case 0 :
+                    case 0 :
                         Intent intent = new Intent(News_List.this,news_content.class);
                         startActivity(intent);
                     case 1 :
@@ -121,6 +104,78 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
                 }
             }
         });
+
+        mlistView1.addFooterView(LoadMoreView);//增加下滑时底部显示的ProgressBar
+        mlistView1.setOnScrollListener(this);//设置下滑监听器
+        mlistView3.addFooterView(LoadMoreView);//增加下滑时底部显示的ProgressBar
+        mlistView3.setOnScrollListener(this);//设置下滑监听器
+        mlistView4.addFooterView(LoadMoreView);//增加下滑时底部显示的ProgressBar
+        mlistView4.setOnScrollListener(this);//设置下滑监听器
+
+        final TabHost tabhost = (TabHost) findViewById(R.id.tabhost);
+        tabhost.setup();//启动并添加TAB
+        tabhost.addTab(tabhost.newTabSpec("t1").setIndicator(changeTabWight("新闻",R.mipmap.ic_launcher)).setContent(R.id.tab01));
+        tabhost.addTab(tabhost.newTabSpec("t2").setIndicator(changeTabWight("图片",R.mipmap.ic_launcher)).setContent(R.id.tab02));
+        tabhost.addTab(tabhost.newTabSpec("t3").setIndicator(changeTabWight("视频",R.mipmap.ic_launcher)).setContent(R.id.tab03));
+        tabhost.addTab(tabhost.newTabSpec("t4").setIndicator(changeTabWight("更多",R.mipmap.ic_launcher)).setContent(R.id.tab04));
+        initcolor(tabhost);//初始化Tab背景色
+        tabhost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                updatecolor(tabhost);//监听Tab更换事件，改变背景色
+                switch (tabId) {
+                    case "t2" :
+//                            mlistView2 = (ListView)findViewById(R.id.list2_item);
+//                            mapList.clear();
+//                            initView(str2);
+//                            madapter.notifyDataSetChanged();
+//                            mlistView2.setAdapter(madapter);
+                            viewPager = (ViewPager) findViewById(R.id.viewpager);
+                            mpagerAdapter = new ViewPagerAdapter(viewList);
+                            viewPager.setAdapter(mpagerAdapter);
+                            viewPager.setCurrentItem(0);
+
+                            break;
+                    case "t1" :
+                            mlistView1 = (ListView)findViewById(R.id.list1_item);
+                            mapList.clear();
+                            initView(str,image);
+                            madapter = new ListAdapter(News_List.this,mapList,R.layout.list_item);
+                            mlistView1.setAdapter(madapter);
+                            break;
+                    case "t3" :
+                            mapList.clear();
+                            initView(str2,image);
+                            madapter = new ListAdapter(News_List.this,mapList,R.layout.list_item);
+                            mlistView3.setAdapter(madapter);
+                            break;
+                    case "t4" :
+                            mapList.clear();
+                            initView(str2,image);
+                            madapter = new ListAdapter(News_List.this,mapList,R.layout.list_item);
+                            mlistView4.setAdapter(madapter);
+                            break;
+                }
+            }
+        });
+    }
+
+    public void initView(String[] str,Integer [] iv) {
+        mapList = new ArrayList<>();//获取数据源的内容
+        for(int i = 0; i < 21 ; i ++) {
+            Map<String ,String> data = new HashMap<>();
+            if (i < str.length) {
+                data.put("title","Title:" + i);
+                data.put("context",str[i]);
+                if (i < iv.length) {
+                    data.put("image", iv[i].toString());
+                }
+            }else {
+                data.put("title","Title:" + i);
+                data.put("context","AAA");
+            }
+            mapList.add(data);
+        }
     }
 
     @Override
@@ -128,7 +183,7 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
         int visiblelastitem = madapter.getCount() - 1;
         int lastindex = visiblelastitem + 1;
         if (lastindex == visibleLastIndex && scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
-            loadmore(mlistView);//滑动到最底部，调用loadmore()读取更多item
+            loadmore(mlistView1);//滑动到最底部，调用loadmore()读取更多item
         }
     }
      @Override
@@ -145,7 +200,7 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
                 loaddata();
 
                 madapter.notifyDataSetChanged();
-                mlistView.setSelection(visibleLastIndex - visibleItemCount + 1);
+                mlistView1.setSelection(visibleLastIndex - visibleItemCount + 1);
                 progressBar.setVisibility(View.INVISIBLE);
             }
         },1000);
