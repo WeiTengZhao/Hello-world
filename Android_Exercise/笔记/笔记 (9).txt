@@ -839,7 +839,7 @@ public class MainActivity extends AppCompatActivity {
 					....相应动作处理	
 			}
 		}
-	}
+	};
 	3.在监听触发事件中创建新线程：
 		public void onClick (View view) {
 			MyThread mythread = new MyThread();
@@ -978,3 +978,6 @@ public class MainActivity extends AppCompatActivity {
 79.复用Adapter每次都要重新创建。
 
 80.cd - 可以返回上次所在的目录
+
+81.HttpURLConnection用法：
+	

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,16 +21,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button send_request;
     private TextView response;
     private static final int SHOW_RESPONSE = 0;
-    private Handler handler = new Handler();
+    private Handler handler = new Handler() {
 
-    public void handleMessage (Message msg) { //定义Message对象进行UI操作
-        switch (msg.what) {
-            case SHOW_RESPONSE :
-                String responseable = (String) msg.obj;
-                response.setText(responseable);
+        public void handleMessage(Message msg) { //定义Message对象进行UI操作
+            switch (msg.what) {
+                case SHOW_RESPONSE:
+                    String responseable = (String) msg.obj;
+                    response.setText(responseable);
+            }
         }
-    }
-
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.send_request :
                 sendRequestWithUrlConnection();
+                Toast.makeText(MainActivity.this,"Button",Toast.LENGTH_SHORT).show();
                 break;
             default:break;
         }
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Message message = new Message();//定义UI操作的Messages实例
                 message.what = SHOW_RESPONSE; //定义的Message实例标志，便于接受区分开做不同处理
-                message.obj = builder; //向Message发送的数据内容
+                message.obj = builder.toString(); //向Message发送的数据内容
                 handler.sendMessage(message); //向Message发送实例
 
             } catch (MalformedURLException e) {
