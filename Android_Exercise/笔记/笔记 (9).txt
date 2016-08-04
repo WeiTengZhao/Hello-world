@@ -181,16 +181,16 @@
 		通过重写onSaveInstanceState(Bundle outState)方法实现
 			例如：
 				protected void onSaveInstanceState(Bundle outState) {
-	super.onSaveInstanceState(outState);
-	String tempData = "Something you just type";
-	outState.putString("data_key",tempData);//putString(键值，内容)
-}
+					super.onSaveInstanceState(outState);
+					String tempData = "Something you just type";
+					outState.putString("data_key",tempData);//putString(键值，内容)
+				}
 	2.取出：(因为是onDestory()之后数据消失，再次启动在onCreate()要读数据，所以在onCreate()中取出）
 		直接使用saveInstanceState中的相应数据类型的方法进行取出
 			例如：
 				if(saveInstanceState != null) {
 					String tempData = saveInstanceState.getString("data_key");
-}
+				}
 
 31.查询当前在运行的Activity:
 	通过新建一个BaseActivity并让其他所有类继承它，在BaseActivity的onCreate()中调用Log.d("BaseActicity",getClass().getSimpleName()) 在Log中显示当前活动的Activity名称。
@@ -322,7 +322,7 @@ android:layout_marginLeft = “10px”
 	ProgressDialog.Builder dialog = new ProgreeDialog.Builder(MainActivity.this); //构造
 		dialog.setTitle("PrigressDialog"); //设置标题
 		dialog.setMessage("New Loding....");//设置内容
-		dialog.setCancelable(true); //返回键是否可以取消窗帘
+		dialog.setCancelable(true); //返回键是否可以取消窗体
 		dialog.show()//显示窗体，用dismiss（）方法用来使窗体消失
 
 44.<TableLayout>几个属性：
@@ -980,4 +980,19 @@ public class MainActivity extends AppCompatActivity {
 80.cd - 可以返回上次所在的目录
 
 81.HttpURLConnection用法：
-	
+	1.获取HttpURLConnection对象
+		(1)new Url 对象传入地址
+		(2)Url对象调用openConnection()方法即可获取HttpURLConnection对象
+	2.设置请求方法
+		httpurlconncection.setRequestMethod("GET"/"POST");
+	-----
+	使用范例：
+		HttpURLConnection httpurlconnection = null;	
+		URL url = new URL("http://www.baidu.com");
+                httpurlconnection = (HttpURLConnection) url.openConnection();//通过url对象获取HttpURLConnection对象
+                //对HttpURLConnection对象进行基本设置
+                httpurlconnection.setConnectTimeout(8000);//连接超时时间
+                httpurlconnection.setReadTimeout(8000);//读取超时时间
+                httpurlconnection.setRequestMethod("GET");//请求方法
+                //获取流对象进行流操作
+                InputStream in = httpurlconnection.getInputStream();

@@ -1,5 +1,6 @@
 package com.example.shao.news;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -44,20 +46,16 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
     private ProgressBar progressBar;
     private List<View> viewList;
     private List<Map<String,String>> mapList;
-    private String[] str = {"DMM","横须贺镇守府",
-            "吴镇守府","佐世保镇守府","舞鹤镇守府","大凑警备府",
-            "トラック泊地","リンガ泊地","ラバウル基地","ショートランド泊地",
-            "ブイン基地","タウイタウイ泊地", "パラオ泊地","ブルネイ泊地",
-            "単冠湾泊地","幌筵泊地","宿毛湾泊地","鹿屋基地","岩川基地",
-            "佐伯湾泊地","柱岛泊地"};//测试数据源
+    private String[] str = {"新闻内容1","新闻内容2","新闻内容3","新闻内容4","新闻内容5","新闻内容6","新闻内容7",
+        "新闻内容8","新闻内容9","新闻内容10","新闻内容11","新闻内容12","新闻内容13","新闻内容14","新闻内容15","新闻内容16",
+            "新闻内容17"};
      private String[] str2 = {"DMM","AAA",
             "BBB","CCC","DDD","EEE",
-            "FFF","GGG","HHH","泊地",
+            "FFF","GGG","HHH","KKK",
             "TTT","III", "OOOO","QQQQ",
-            "RRRR","WWWW","QAWEAQRDF","2DFEQQQ","岩川基地",
+            "RRRR","WWWW","QAWEAQRDF","2DFEQQQ","LLLLLL",
             "DJJK","DFDSXX"};//测试数据源
-    private Integer[] image = {R.drawable.d1,R.drawable.d2,
-            R.drawable.d3,R.drawable.d4,R.drawable.d5,R.drawable.d6};
+    private Integer[] image = {R.drawable.d1, R.drawable.d2};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +65,25 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
         //actionBar.setDisplayHomeAsUpEnabled(true);显示ActionBar的箭头
         actionBar.setDisplayUseLogoEnabled(true);//显示图标
         actionBar.setIcon(R.mipmap.icon);//设置ActionBar图标
+
+        //弹出测试DEMO说明框
+        AlertDialog.Builder builder = new AlertDialog.Builder(News_List.this);
+        builder.setTitle("说明");
+        builder.setMessage("ListView 的item比较多，故只在前面几个item设置了的点击事件监听及跳转至新闻详情页的响应");
+        builder.setCancelable(true);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
 
         initView(str,image);     //调用初始化数据的方法
         //设置底部载入栏
@@ -162,15 +179,19 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
 
     public void initView(String[] str,Integer [] iv) {
         mapList = new ArrayList<>();//获取数据源的内容
-        for(int i = 0; i < 21 ; i ++) {
+        int j = 0;
+        for(int i = 0; i < 21 ; i ++) { //第一次打开显示的条目数
             Map<String ,String> data = new HashMap<>();
             if (i < str.length) {
                 data.put("title","Title:" + i);
                 data.put("context",str[i]);
-                if (i < iv.length) {
-                    data.put("image", iv[i].toString());
-                }
+//                if (j < iv.length - 1) {
+//                    data.put("image", iv[i].toString());
+//                    j++;
+//                }
+                data.put("image",String.valueOf(R.mipmap.icon));
             }else {
+                data.put("image", String.valueOf((R.mipmap.icon)));
                 data.put("title","Title:" + i);
                 data.put("context","AAA");
             }
@@ -221,7 +242,7 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
                 madapter.addItem(i,data);
             }
         }else {
-            for (int i = count ; i < 52 ; i ++) {
+            for (int i = count ; i < 52 ; i ++) { //下滑最大可以加载到的Item数目
                 Map<String, String> data = new HashMap<>();
                 data.put("title", "title=" + i);
                 data.put("context", "context=" + count);
