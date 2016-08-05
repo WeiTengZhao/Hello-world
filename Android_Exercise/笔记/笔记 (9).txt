@@ -996,3 +996,34 @@ public class MainActivity extends AppCompatActivity {
                 httpurlconnection.setRequestMethod("GET");//请求方法
                 //获取流对象进行流操作
                 InputStream in = httpurlconnection.getInputStream();
+
+82.View对象旋转动画效果的使用方法：(在调用动画效果的.java中写)
+	(1)设置RotateAnimation对象
+		RotateAnimation animation = new RotateAnimation(起始旋转角度，最终旋转角度，View对象旋转中心点x坐标，View对象旋转中心点y坐标);
+	(2)使用RotateAnimation进行一系列设置
+		animation.setDuration(100);//设置动画持续时间
+		animation.setFillAfter(true);//设置动画结束后是否保持当前状态，false则恢复会执行动画前的状态
+	(3)View对象开启动画效果
+		imageView.starAnimation(animation);
+	(4)可以使用imageView.clearAnimation(); 方法清除存在的动画效果
+	----------使用示例
+		private void rotateArrow() { //设置图片的翻转动画效果
+			float pivotX = arrow.getWidth() / 2f; //获取图片中心点的坐标
+			float pivotY = arrow.getHeight() / 2f;
+
+			float fromDegress = 0,toDegress = 0;//设置旋转动画的起始角度，和最终角度
+			if (currentStatus == STATUS_PULL_TO_REFRESH) {//根据状态不同设置其实和结束角度
+			    fromDegress = 180f;
+			    toDegress = 360f;
+			}else if (currentStatus == STATUS_RELEASE_TO_REFRESH) {
+			    fromDegress = 0f;
+			    toDegress = 180f;
+			}
+			RotateAnimation animation = new RotateAnimation(fromDegress,toDegress,pivotX,pivotY);
+			animation.setDuration(100); //设置动画持续时间
+			animation.setFillAfter(true);//设置动画结束后View对象是否保持当前状态
+			arrow.startAnimation(animation);//View对象启用旋转动.画效果
+		}
+	
+83.ListView的下拉刷新，自己写很麻烦，大概照着网上的走了一遍，所以只说使用方法，就是在ListView外嵌套<com.example.shao.news.RefreshableView></com.example.shao.news.RefreshableView>
+将事先写好的RefreshableView.java和pull_to_refresh.xml引入

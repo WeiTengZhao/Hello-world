@@ -46,6 +46,7 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
     private ProgressBar progressBar;
     private List<View> viewList;
     private List<Map<String,String>> mapList;
+    RefreshableView refreshableView;
     private String[] str = {"新闻内容1","新闻内容2","新闻内容3","新闻内容4","新闻内容5","新闻内容6","新闻内容7",
         "新闻内容8","新闻内容9","新闻内容10","新闻内容11","新闻内容12","新闻内容13","新闻内容14","新闻内容15","新闻内容16",
             "新闻内容17"};
@@ -84,6 +85,20 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
             }
         });
         builder.show();
+
+        refreshableView = (RefreshableView) findViewById(R.id.refreshable_view);
+        refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
+            @Override
+            public void onRefresh() {
+                try {
+                    Thread.sleep(3000);
+
+                }catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                refreshableView.finishRefreshing();
+            }
+        },0);
 
         initView(str,image);     //调用初始化数据的方法
         //设置底部载入栏

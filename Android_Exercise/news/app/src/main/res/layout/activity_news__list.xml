@@ -8,6 +8,7 @@
        android:layout_height="match_parent"
        android:orientation="vertical"
        >
+
     <FrameLayout
         android:id="@android:id/tabcontent"
         android:layout_height="match_parent"
@@ -20,12 +21,18 @@
             android:layout_width="wrap_content"
             android:orientation="vertical"
         >
+            <com.example.shao.news.RefreshableView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/refreshable_view"
+           >
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/list1_item"
             >
             </ListView>
+            </com.example.shao.news.RefreshableView>
         </LinearLayout>
 
         <LinearLayout
@@ -67,6 +74,7 @@
         </LinearLayout>
 
     </FrameLayout>
+
        <TabWidget
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
