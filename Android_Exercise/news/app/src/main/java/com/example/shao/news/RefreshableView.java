@@ -332,7 +332,7 @@ public class RefreshableView extends LinearLayout implements View.OnTouchListene
     }
 
  public interface PullToRefreshListener {
-         void onRefresh();
+         void onRefresh();	//具体的更新逻辑写在设置监听器时的这里
     }
 
 
