@@ -1027,3 +1027,153 @@ public class MainActivity extends AppCompatActivity {
 	
 83.ListView的下拉刷新，自己写很麻烦，大概照着网上的走了一遍，所以只说使用方法，就是在ListView外嵌套<com.example.shao.news.RefreshableView></com.example.shao.news.RefreshableView>
 将事先写好的RefreshableView.java和pull_to_refresh.xml引入
+
+84.常见的输入流处理：
+	private static String converStreamToString(InputStream is) {//定义函数，参数为输入流对象，使用时直接调用此函数
+		BufferedReader read = new BufferedRead(new InputStreamReader(is));
+		String line;
+		try{
+			StringBuilder builder = new StringBuilder();
+			while((line = read.readLine()) != null) {
+				builder.append(line);
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				is.close();
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return builder.toString;
+	}
+
+85.Android中添加获取HttpClient的方法：
+	1.在build.gradle中添加 android{useLibrary 'org.apache.http.legacy'}
+
+	2.选中相应的Moudle，右键属性(open moudle setting...)———Dependencies选项卡————加号——1——搜org.apache http client
+
+86.上一点提出使用HttpClient编译时有使用过时API的提示，并给出警告：
+	.有关详细信息，请使用-Xlint:deprecation重新编译。
+	.有关详细信息，请使用-Xlint:unchecked重新编译。
+   此时，请项目相对应的build.gradle中添加配置：（直接在文件后面加）
+	allprojects {
+    		gradle.projectsEvaluated {
+        		tasks.withType(JavaCompile) {
+            			options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        		}
+    		}
+	}
+
+88.HttpClient使用方法：
+	1.通过DefaultHttpClient创建HttpClient实例
+	2.创建HttpGet对象，传入url
+	3.使用HttpClient对象调用excute获取存放响应内容的HttpResponse对象
+	4.HttpResponse对象调用getEntity方法获取HttpEntity对象
+	5.通过HttpEntity对象获取字符串
+--------使用示例：
+	HttpClient httpClient = new DefaultHttpClient(); //通过DefaultClient创建实例HttpClient
+                HttpGet httpGet = new HttpGet("http://www.baidu.com");//创建HttpGet对象
+                HttpResponse httpResponse = httpClient.execute(httpGet);//获取Response对象包含响应的返回信息
+                if (httpResponse.getStatusLine().getStatusCode() == 200 ) { //判断是否得到响应
+                    HttpEntity entity = httpResponse.getEntity();//通过entity获取字符串
+                    String response = EntityUtils.toString(entity,"utf-8");
+
+89.Android调试PC服务器时，地址不一定是127.0.0.1，得根据模拟器的不同查阅辨别
+
+90.HttpClient使用PULL解析XML：
+	1.先获取XmlPullParserFactory实例（使用XmlPullParsetFactory.newInstance()方法）
+	2.通过XmlPullParserFactory实例的.newPullParser()方法得到XmlPullParser对象
+	3.将返回的Response对象设置到XmlPullparser中（XmlPullparser对象使用setInput()方法）
+	4.通过getEvenType获取一个int 进行解析（不等于xmlPullPaser.END_DOCUMENT）时将一直进行解析
+-------例子：
+	private void parseXMLwithPull(String xmlData) {
+        try {
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();//获取XmlPullParserFactory实例
+            XmlPullParser pullparser = factory.newPullParser();//由XmlPullParserFactory实例获得XmlPullParser对象
+            pullparser.setInput(new StringReader(xmlData));  //将返回的内容xmlData设置到XmlPullParser对象中去
+            int evenType = pullparser.getEventType();       //获取参数类型进行解析
+
+            //定义存放数据的参数
+            String name = "";
+            String id = "";
+            String version = "";
+
+            //开始进行解析
+            while (evenType != XmlPullParser.END_DOCUMENT) { //说明解析没有结束
+                String nodeName = pullparser.getName();//获取当前节点的名字
+                switch (evenType) {
+                    case XmlPullParser.START_TAG : //开始解析某个节点
+                        if (nodeName.equals("id")) { //节点名等于id、version、name就使用nextText()方法获取内容
+                            id = pullparser.nextText();
+                        }
+                        if (nodeName.equals("name")) {
+                            name = pullparser.nextText();
+                        }
+                        if (nodeName.equals("version")) {
+                            version = pullparser.nextText();
+                        }
+                        break;
+
+                    case XmlPullParser.END_TAG : //结束解析某个节点
+                        if(nodeName.equals("app")) {
+                            Log.d("PULL",id);
+                            Log.d("PULL",version);
+                            Log.d("PULL",name);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                evenType = pullparser.next();//获取下一个解析事件
+            }
+
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+91.解析JSON时，发现报 at org.json.JSONTokener.syntaxError <450> 错误，检查服务器端的JSON格式是否正确
+
+92.HttpClient + JSONObject 解析JSON：
+	1.将存放响应内容的Response对象传入JSONArray，构建JSONArray对象;
+	2.通过遍历JSONArray对象获取JSONObject对象
+	3.通过JSONObject对象对JSON文件进行解析。
+------范例：
+	private void parseJOSNWithJSONObject(String jsonData) {
+		try{
+		    JSONArray jsonArray = new JSONArray(jsonData);//将Response对象传进来，构建JSONArray对象
+		    for(int i = 0 ;i < jsonArray.length(); i++) { //遍历JSONArray对象，获取JSONObject对象
+			JSONObject jsonObject = jsonArray.getJSONObject(i);
+			String id = jsonObject.getString("id");// 使用JSONObject对象对JSON进行解析
+			String version = jsonObject.getString("version");
+			String name = jsonObject.getString("name");
+
+			Log.d("JSON","id is:"+ id);
+			Log.d("JSON","name is:"+ name);
+			Log.d("JSON","version is:" + version);
+		    }
+		}catch (Exception e) {
+		    e.printStackTrace();
+        }
+    
+93.Android Studio 添加GSON:
+	类似于85.搜索时搜GSON即可
+
+94.使用GSON解析JSON：
+	1.新建一个JavaBean用来存放JSON的内容；（因为GSON会自动将内容转化成对象）
+	2.创建GSON对象；
+	3.GSON对象调用.fromJson(Rrsponse对象,  new Type.Taken(){}.List<<创建的JavaBean>>{}.getType ) 方法将内容取出放到以创建的JavaBean为类的List中;(若不是JSON数组，第二参数为JavaBean.class)
+	4.遍历取数
+--------范例：
+	private void parseJSONWithGSON(String response) {//使用GSON解析JSON
+		Gson gson = new Gson();
+		List<App> appList = gson.fromJson(response, new TypeToken<List<App>>(){}.getType()); //JSON数组通过TypeToken对象传入gson.fronJson方法中，通过Json方法，我们可以将JSON数据直接转成类App的对象
+		for (App app:appList) {
+		    Log.d("GSON","id is :" + app.getId());
+		    Log.d("GSON","name is :" + app.getName());
+		    Log.d("GSON","Version is :" + app.getVersion());
+		}
+    }

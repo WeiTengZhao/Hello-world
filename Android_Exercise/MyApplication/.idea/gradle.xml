@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/filepersistencetest" />
             <option value="$PROJECT_DIR$/listviewtest" />
             <option value="$PROJECT_DIR$/networktest" />
+            <option value="$PROJECT_DIR$/networktest-httpclient" />
             <option value="$PROJECT_DIR$/servicebestpractice" />
             <option value="$PROJECT_DIR$/servicetest" />
             <option value="$PROJECT_DIR$/sharedpreferences" />
@@ -40,6 +41,7 @@
             <option value="$PROJECT_DIR$/filepersistencetest" />
             <option value="$PROJECT_DIR$/listviewtest" />
             <option value="$PROJECT_DIR$/networktest" />
+            <option value="$PROJECT_DIR$/networktest-httpclient" />
             <option value="$PROJECT_DIR$/servicebestpractice" />
             <option value="$PROJECT_DIR$/servicetest" />
             <option value="$PROJECT_DIR$/sharedpreferences" />

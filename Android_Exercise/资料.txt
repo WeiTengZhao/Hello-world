@@ -10,3 +10,12 @@
 http://blog.csdn.net/liuhe688/article/details/6852523 
 
  Listview分页加载，也就是加载更多，这个例子不错很简单
+
+HTTP 网络库 NoHttp Volley OKHTTP
+这个是自带的 RecyclerView  这个跟listview  差不多
+
+新闻资讯列表 数据接口
+http://school.wojia99.com/public/index.php?d=android&c=news&m=list4&catid=4
+字段 id  title thumb封面图 addtime 时间
+
+有两个一个是阿里的fastjson,一个是google的GSON

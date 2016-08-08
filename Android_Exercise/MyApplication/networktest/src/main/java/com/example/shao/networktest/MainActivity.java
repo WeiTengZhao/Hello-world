@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         send_request = (Button) findViewById(R.id.send_request);
         response = (TextView) findViewById(R.id.respsonse);//获取view对象
-        
+
         send_request.setOnClickListener(this); //设置点击事件监听
     }
 
