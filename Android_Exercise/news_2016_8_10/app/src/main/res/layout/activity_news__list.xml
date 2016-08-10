@@ -1,0 +1,84 @@
+<TabHost
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       >
+
+    <FrameLayout
+        android:id="@android:id/tabcontent"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        >
+        <LinearLayout
+            android:id="@+id/tab01"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+        >
+            <com.example.shao.news.RefreshableView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/refreshable_view"
+           >
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/list1_item"
+            >
+            </ListView>
+            </com.example.shao.news.RefreshableView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tab02"
+            >
+            <android.support.v4.view.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/viewpager"
+                >
+
+            </android.support.v4.view.ViewPager>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tab03"
+            >
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/list3_item"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tab04"
+            >
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/list4_item"
+                />
+        </LinearLayout>
+
+    </FrameLayout>
+
+       <TabWidget
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@android:id/tabs"
+           ></TabWidget>
+   </LinearLayout>
+</TabHost>
