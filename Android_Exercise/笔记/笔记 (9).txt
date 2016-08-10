@@ -1177,3 +1177,13 @@ public class MainActivity extends AppCompatActivity {
 		    Log.d("GSON","Version is :" + app.getVersion());
 		}
     }
+
+96.两种for循环的转换：
+	for(int i = 0; i < appList.size();i++) {
+		App app = appList.get(i);
+		app.get(id);....其他操作
+	}
+----------
+	for(App app:appList) {
+		app.get(id);...其他操作
+	}
