@@ -1186,4 +1186,40 @@ public class MainActivity extends AppCompatActivity {
 ----------
 	for(App app:appList) {
 		app.get(id);...其他操作
-	}
+	}	allprojects {
+
+97.Android Studio中使用.initialize()来替换废弃的.init()方法进行初始化
+    	
+98.
+===============================================================NoHttp框架的使用===================================================================================================
+*属于比较难的内容，不是很理解，主要参照DEMO写，列出主要步骤：
+一、在build.gradle添加 compile 'yolanda.nohttp:nohttp:+' 引入最新的NoHttp包
+
+二、新创建一个继承自Application的类用于对NoHttp进行初始化，主要内容包括：
+	(1)定义一个静态的Appilcation 类型的变量，用来接收应用程序的Application；
+	(2)重写 Application类的onCreate()方法，主要内容有:
+		1.令Application类型变量 等于当前(this);
+		2.初始化NoHttp;[使用 NoHttp.initialize(this);]
+		3.打开调试模式；[使用 Logger.setDebug(true);] //注意Logger要选择NoHttp包里的
+		4.打开日志；[使用 Logger.setTag(项目名称);] 
+	(3)写Application 静态变量的get方法;
+			----------------------------------------------范例-------------------------------------------
+				public class MyApplication extends Application {
+				    private static Application intance; //设置静态的Application 类型变量intance,用来接收应用程序的Application
+
+				    public static Application getIntance() { //静态变量intance的get方法
+					return intance;
+				    }
+
+				    @Override				//重写Application的onCreate()方法
+				    public void onCreate() {
+					super.onCreate();
+					intance = this;//初始化intance
+					NoHttp.initialize(this);//初始化NoHttp,键97点补充
+					Logger.setDebug(true);//设置调试模式
+					Logger.setTag("news");//打开日志
+				    }
+			-----------------------------------------------------------------------------------------------					
+
+三、在相应的MainActivity中使用:
+	(1)
