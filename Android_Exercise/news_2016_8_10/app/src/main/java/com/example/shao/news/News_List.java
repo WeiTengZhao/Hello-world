@@ -2,10 +2,10 @@ package com.example.shao.news;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -43,21 +43,13 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
     private View v1;//ViewPager第一个页面
     private View v2;//ViewPager第二个页面
     private View LoadMoreView;//底部载入进度条
-    private Handler handler = new Handler() {
-        public void handlerMessage(Message msg) {
-            switch (msg.what) {
-
-            }
-        }
-    };//Handler对象，用于定义多线程操作
+    private Handler handler1 = new Handler();//Handler对象，用于定义多线程操作
     private ProgressBar progressBar;
     private List<View> viewList;
     private List<Map<String,String>> mapList;
     RefreshableView refreshableView;
     private New aNew;
     private List<New> list;
-
-    private Integer[] image = {R.drawable.d1, R.drawable.d2};
 
     String url = "http://school.wojia99.com/public/index.php?d=android&c=news&m=list4&catid=4";//设置URL地址从网上获取数据
 //设置异步消息处理机制，使得子线程得以对UI进行操作
@@ -75,7 +67,8 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
         //actionBar.setDisplayHomeAsUpEnabled(true);显示ActionBar的箭头
         actionBar.setDisplayUseLogoEnabled(true);//显示图标
         actionBar.setIcon(R.mipmap.icon);//设置ActionBar图标
-        list = new ArrayList<New>();
+
+        list = new ArrayList<New>();//初始化list
 
         //网络访问
         HttpUtil.sendHttpRequest(url, new HttpCallBackListener() {
@@ -194,6 +187,36 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
             Log.d("GSON","AddTime is :" + aNew.getAddtime());
             Log.d("GSON","Title is :" + aNew.getTitle());
             Log.d("GSON","Thumb is :" + aNew.getThumb());
+            Bitmap bitmap = null;
+            try {
+                bitmap = ToBitmap.toBitmap(aNew.getThumb());
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+                aNew.setBitmap(bitmap);
+            runOnUiThread(new Runnable() {
+                              @Override
+                              public void run() {
+                                  mlistView1.setAdapter(madapter); //返回主线程重设Adapter
+                              }
+                          }
+            );
+//            try {
+//                URL url = new URL(aNew.getThumb().toString());
+//                HttpUtil.onloadImage(url, new OnLoadImageListener() {
+//                @Override
+//                public void OnLoadImage(Bitmap obj, String BitmapPath) {
+//                    if (obj != null) {
+//                        aNew.setBitmap(obj);
+//                    }else {
+//                        Log.d("viewHolder error:","Can't get Bibmap!");
+//                    }
+//                }
+//            });
+//            }catch (Exception e) {
+//                e.printStackTrace();
+//                Log.d("GSON","URL Exception");
+//            }
             list.add(aNew);
         }
     }
@@ -224,51 +247,13 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
         int visiblelastitem = madapter.getCount() - 1;
         int lastindex = visiblelastitem + 1;
         if (lastindex == visibleLastIndex && scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
-            loadmore(mlistView1);//滑动到最底部，调用loadmore()读取更多item
+            //滑动到最底部，调用loadmore()读取更多item
         }
     }
      @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         this.visibleItemCount = visibleItemCount;
         visibleLastIndex = firstVisibleItem + visibleItemCount - 1;
-    }
-
-    private void loadmore(View view) {
-        progressBar.setVisibility(View.VISIBLE);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                loaddata();
-
-                madapter.notifyDataSetChanged();
-                mlistView1.setSelection(visibleLastIndex - visibleItemCount + 1);
-                progressBar.setVisibility(View.INVISIBLE);
-            }
-        },1000);
-    }
-
-    private void loaddata() {
-        int count = madapter.getCount();
-        if(count + 10 <= 51){
-            for (int i = count; i < count + 10; i++) {
-                Map<String, String> data = new HashMap<>();
-                if(i < str.length) {
-                    data.put("title", "title=" + i);
-                    data.put("context", "context=" + str[i]);
-                }else {
-                    data.put("title", "title=" + i);
-                    data.put("context", "context="+ i);
-                }
-                madapter.addItem(i,data);
-            }
-        }else {
-            for (int i = count ; i < 52 ; i ++) { //下滑最大可以加载到的Item数目
-                Map<String, String> data = new HashMap<>();
-                data.put("title", "title=" + i);
-                data.put("context", "context=" + count);
-                madapter.addItem(i,data);
-            }
-        }
     }
 
     //TabWight添加图片的方法

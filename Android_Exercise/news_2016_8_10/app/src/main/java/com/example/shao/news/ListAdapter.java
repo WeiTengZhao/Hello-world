@@ -1,8 +1,6 @@
 package com.example.shao.news;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,17 +70,24 @@ public class ListAdapter extends BaseAdapter {
         viewHolder.title.setText(n.getId());//通过mlist设置ListView文本内容
         viewHolder.context.setText(n.getTitle());
         try {
-//            viewHolder.imageView.setImageResource(R.mipmap.ic_launcher);
-            HttpUtil.onloadImage(n.getThumb(), new OnLoadImageListener() {
-                @Override
-                public void OnLoadImage(Bitmap obj, String BitmapPath) {
-                    if (obj != null) {
-                        viewHolder.imageView.setImageBitmap(obj);
-                    }else {
-                        Log.d("viewHolder error:","Can't get Bibmap!");
-                    }
-                }
-            });
+            viewHolder.imageView.setImageBitmap(n.getBitmap());
+//            try {
+//                URL url = new URL(n.getThumb());
+//                HttpUtil.onloadImage(url, new OnLoadImageListener() {
+//                @Override
+//                public void OnLoadImage(Bitmap obj, String BitmapPath) {
+//                    if (obj != null) {
+//                        viewHolder.imageView.setImageBitmap(obj);
+//                    }else {
+//                        Log.d("viewHolder error:","Can't get Bibmap!");
+//                    }
+//                }
+//            });
+//            }catch (Exception e) {
+//                e.printStackTrace();
+//                Log.d("viewHolder","URL Exception");
+//            }
+
 
         }catch (NumberFormatException e) {
             e.printStackTrace();
@@ -96,12 +101,7 @@ public class ListAdapter extends BaseAdapter {
         TextView context;
     }
 
-    public void addItem (int position,Map<String, String> data)  {
 
-        mlist.add(position,data);
-    }
 
-    public void addNew(int position,New data) {
-        newList.add(position, data);
-    }
+
 }

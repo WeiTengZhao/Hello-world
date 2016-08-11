@@ -1,5 +1,7 @@
 package com.example.shao.news;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by Shao on 2016/8/10.
  */
@@ -7,7 +9,17 @@ public class New {
     String id;
     String addtime;
     String title;
+    Bitmap bitmap;
     String thumb;
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+
 
     public String getId() {
         return id;

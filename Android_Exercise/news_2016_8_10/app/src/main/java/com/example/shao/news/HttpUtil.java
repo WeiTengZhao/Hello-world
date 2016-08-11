@@ -3,6 +3,7 @@ package com.example.shao.news;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
@@ -11,7 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -77,27 +77,24 @@ public class HttpUtil {
     }
 
     //URL获取图片
-    public static void onloadImage (final String URLstr, final OnLoadImageListener onLoadImageListener) {
-        URL bitmapURL = null;
-        try {
-            bitmapURL = new URL(URLstr);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+    public static void onloadImage (final URL BitmapURL, final OnLoadImageListener onLoadImageListener) {
        //定义异步处理机制
+        Looper.prepare();
         final Handler handler = new Handler() {
             public void handlerMessage(Message msg) {
                 onLoadImageListener.OnLoadImage((Bitmap)msg.obj,null);
             }
         };
 
-        final URL finalBitmapURL = bitmapURL;
+
         new Thread(new Runnable() {
             @Override
             public void run() {
-                URL imageURL = finalBitmapURL;//获取URL
+                URL imageURL = BitmapURL;//获取URL
                 try {
                     HttpURLConnection conn = (HttpURLConnection)imageURL.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setConnectTimeout(5000);
                     InputStream in = conn.getInputStream();//构建出HttpConnection对象取得输入流
                     Bitmap bitmap = BitmapFactory.decodeStream(in);//构建bitmap
                     Message message = new Message();
