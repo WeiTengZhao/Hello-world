@@ -157,17 +157,12 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
                 updatecolor(tabhost);//监听Tab更换事件，改变背景色
                 switch (tabId) {
                     case "t2" :
-//                            mlistView2 = (ListView)findViewById(R.id.list2_item);
-//                            mapList.clear();
-//                            initView(str2);
-//                            madapter.notifyDataSetChanged();
-//                            mlistView2.setAdapter(madapter);
                             viewPager = (ViewPager) findViewById(R.id.viewpager);
                             mpagerAdapter = new ViewPagerAdapter(viewList);
                             viewPager.setAdapter(mpagerAdapter);
                             viewPager.setCurrentItem(0);
-
                             break;
+
                     case "t1" :
                             mlistView1 = (ListView)findViewById(R.id.list1_item);
                             mapList.clear();

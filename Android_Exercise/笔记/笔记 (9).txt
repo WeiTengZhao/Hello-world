@@ -1233,7 +1233,14 @@ public class MainActivity extends AppCompatActivity {
 		RequesetQueqe对象赋NoHttp.newRequestQueqe() 值
 	(4)在需要访问Http的地方调用请求方法;
 			----------------------------------------------范例-------------------------------------------
+				mRequeset = NoHttp.newRequestQueue(1);//生成一个请求队列，可以传入整形数定义同时并发请求数，默认为3	
 				
+				button.setOnClickListener(new View.OnClickListener() {
+				    @Override
+				    public void onClick(View v) {
+					reques();//点击时调用向服务发起请求方法
+				    }
+				});
 			-----------------------------------------------------------------------------------------------					
 
 四、写前面调用的请求方法（主要的网络请求在这里实现）：
@@ -1245,13 +1252,45 @@ public class MainActivity extends AppCompatActivity {
 		请求队列的RequestQueqe对象.add(特征码，请求列表，请求监听器对象);
 
 			----------------------------------------------范例-------------------------------------------
-				
+				private void reques() { //设置请求方法,请求服务器
+					Request<String> request = NoHttp.createStringRequest(url);
+					request.add("id","");//传入参数
+					request.add("version","");
+					request.add("name","");
+
+					mRequeset.add(WHAT,request,listener);//将接口传入请求队列,3个参数 特征码，请求接口，返回监听
+			    	}	
 			-----------------------------------------------------------------------------------------------					
 
 五、回调请求监听器对象，实现方法
 
 			----------------------------------------------范例-------------------------------------------
-				
+			private OnResponseListener<String> listener = new OnResponseListener<String>() {
+				@Override
+				public void onStart(int what) {
+					//开始请求
+					Toast.makeText(MainActivity.this,"开始向服务器请求数据",Toast.LENGTH_SHORT).show();
+				}
+
+				@Override
+				public void onSucceed(int what, Response<String> response) {
+					//请求成功
+					tv.setText(response.get());
+				}
+
+				@Override
+				public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+					// 请求失败
+				}
+
+				@Override
+				public void onFinish(int what) {
+					//请求结束
+				}
+		    };	
 			-----------------------------------------------------------------------------------------------					
 
 ==============================================================================================================================================================================
+
+99.使用第三方SmartImageView 加载网络图片：
+	

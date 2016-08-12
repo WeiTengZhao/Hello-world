@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">民大新闻-韦腾照</string>
+    <string name="app_news_list_title">新闻列表页</string>
+    <string name="app_news_content_title1">新闻标题1</string>
+    <string name="app_news_content_title2">新闻标题2</string>
+    <string name="app_news_content_title3">新闻标题3</string>
+    <string name="app_news_content_title4">新闻标题4</string>
+    <string name="app_news_content_title5">新闻标题5</string>
+    <string name="app_news_content_title6">新闻标题6</string>
+    <string name="app_news_content_title7">新闻标题7</string>
+    <string name="app_news_content_title8">新闻标题8</string>
+    <string name="app_news_content_title9">新闻标题9</string>
+    <string name="app_news_content_title10">新闻标题10</string>
+    <string name="app_news_content_title11">新闻标题11</string>
+    <string name="app_news_content_title12">新闻标题12</string>
+    <string name="app_news_content_title13">新闻标题13</string>
+    <string name="app_news_content_title14">新闻标题14</string>
+    <string name="app_news_content_title15">新闻标题15</string>
+    <string name="app_news_content_title16">新闻标题16</string>
+    <string name="app_news_content">\t \t 新闻内容新闻新闻新新闻新闻新新闻新闻新新闻新闻新新闻新闻新新闻新闻新</string>
+</resources>
