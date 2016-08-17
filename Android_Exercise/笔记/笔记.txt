@@ -1,23 +1,54 @@
-1.app/src/main/res/layout/activity_my.xml ÊÇĞÂ½¨ActivityËù¶ÔÓ¦µÄxml²¼¾ÖÎÄ¼ş
-	µ±Ç°ActivityÏÔÊ¾µÄÎÄ×ÖÄÚÈİ£¬ÎÄ±¾¿òµÈ¶¼ÔÚ´ËÉèÖÃ¡£
-2.app/src/main/java/com.mycompany.myfirstapp/MyActivity.java
-ÊÇÕë¶Ô¸Õ¸ÕËù´´½¨µÄActivityÀàµÄ¸÷ÖÖ¶¨Òå£¬Í¨¹ıÕâ¸öÎÄ¼şµ÷ÓÃÏàÓ¦µÄxml²¼¾ÖÎÄ¼ş£¬ÊµÏÖ¸÷ÖÖ²¼¾Ö¡£
-3.app/src/main/AndroidManifest.xml
-ÕæµÄÕû¸öÏîÄ¿£¨´´½¨µÄAPP£©µÄ»ù±¾ÌØÕ÷µÄÃèÊö£¬ÀıÈçAPPÃû³Æ£¬×é³ÉÓ¦ÓÃµÄ¸÷ÖÖ×é¼şµÈ¡£
-4.app/build.gradle ÊÇAndroid Studio±àÒë»·¾³µÄËµÃ÷¡£ÆäÖĞ¾ßÓĞÒÔÏÂ¼¸¸ö¹Ø¼ü×Ö£º
-	apply plugin://ÉùÃ÷ÊÇAndroid³ÌĞò
-	compileSdkVersion 23//±àÒëSDK°æ±¾
-	buildToolsVersion "23.0.3"BuildTools°æ±¾
-	applicationId "com.example.administrator.myapplication"//´´½¨ÏîÄ¿Ê±Ó¦ÓÃµÄ°üÃû
-	minSdkVersion 15//ĞÂ½¨Ó¦ÓÃÖ¸¶¨µÄ×îµÍÖ§³ÖµÄSDK°æ±¾
-	targetSdkVersion 23 //ĞÂ½¨Ó¦ÓÃÖ¸¶¨µÄ×î¸ßÖ§³ÖµÄSDK°æ±¾
-	dependencies{}//±àÒëÄ¿Â¼ÏÂµÄjar°ü
+101.ADBè¯†åˆ«ä¸å‡ºï¼š
+	(1)åœ¨SDKè·¯å¾„C:\Users\Administrator\AppData\Local\Android\sdk ä¸‹CMDæ‰§è¡Œadb shellï¼ˆè¯¥è·¯å¾„å¯ä»¥ä»SDK çš„è®¾ç½®å›¾æ ‡æŸ¥çœ‹)
+	(2)æŸ¥çœ‹ç«¯å£å ç”¨ï¼šnetstat -ano | finder "5037"
+	(3)åœ¨Genymotionè®¾ç½®ADBè·¯å¾„æŒ‡å‘SDKæ–‡ä»¶å¤¹
 
-5.²»Í¬ÓÚEclipse Android Studio½«resources×ÊÔ´ÎÄ¼ş¼ĞÖ±½Ó²ğ·Ö£¬¹¦ÄÜ·Ö±ğÎª£º
-	drawable<density>/´æ·Å¸÷ÖÖdensitiesÍ¼ÏñµÄÎÄ¼ş¼Ğ£¬mdpi£¬hdpiµÈ£¬ÕâÀïÄÜ¹»ÕÒµ½Ó¦ÓÃÔËĞĞÊ±µÄÍ¼±êÎÄ¼şic_launcher.png
-	layout/´æ·ÅÓÃ»§½çÃæÎÄ¼ş£¬ÈçÇ°±ßÌáµ½µÄactivity_my.xml£¬ÃèÊöÁËMyActivity¶ÔÓ¦µÄÓÃ»§½çÃæ¡£
-	menu/´æ·ÅÓ¦ÓÃÀï¶¨Òå²Ëµ¥ÏîµÄÎÄ¼ş¡£
-	values/´æ·ÅÆäËûxml×ÊÔ´ÎÄ¼ş£¬Èçstring£¬color¶¨Òå¡£string.xml¶¨ÒåÁËÔËĞĞÓ¦ÓÃÊ±ÏÔÊ¾µÄÎÄ±¾"Hello world!"
+102.åœ¨TextViewä¸­æœ‰è¿™ä¹ˆä¸€ç³»åˆ—å±æ€§ï¼Œå¯ä»¥åœ¨æ–‡å­—çš„ä¸Šä¸‹å·¦å³å¼€å§‹ç»“æŸå¤„ç”»å›¾ç‰‡ç­‰drawableå¯¹è±¡ã€‚
+  android:drawableBottomï¼š	åœ¨textçš„ä¸‹æ–¹è¾“å‡ºä¸€ä¸ªdrawableï¼Œå¯ä»¥æ˜¯å›¾ç‰‡ï¼Œæ ·å¼ï¼Œé¢œè‰²ç­‰ã€‚
+  android:drawableLeftï¼š	åœ¨textçš„å·¦è¾¹è¾“å‡ºä¸€ä¸ªdrawableï¼Œå¯ä»¥æ˜¯å›¾ç‰‡ï¼Œæ ·å¼ï¼Œé¢œè‰²ç­‰ã€‚
+  android:drawableRightï¼š	åœ¨textçš„å³è¾¹è¾“å‡ºä¸€ä¸ªdrawableï¼Œå¯ä»¥æ˜¯å›¾ç‰‡ï¼Œæ ·å¼ï¼Œé¢œè‰²ç­‰ã€‚
+  android:drawableTopï¼š		åœ¨textçš„æ­£ä¸Šæ–¹è¾“å‡ºä¸€ä¸ªdrawableï¼Œå¯ä»¥æ˜¯å›¾ç‰‡ï¼Œæ ·å¼ï¼Œé¢œè‰²ç­‰ã€‚
+  android:drawableStart: 	åœ¨textçš„å¼€å§‹å¤„è¾“å‡ºä¸€ä¸ªdrawableï¼Œå¯ä»¥æ˜¯å›¾ç‰‡ï¼Œæ ·å¼ï¼Œé¢œè‰²ç­‰ã€‚
+  android:drawableEnd: 		åœ¨textçš„ç»“æŸå¤„è¾“å‡ºä¸€ä¸ªdrawableï¼Œå¯ä»¥æ˜¯å›¾ç‰‡ï¼Œæ ·å¼ï¼Œé¢œè‰²ç­‰ã€‚
+  android:drawablePaddingï¼š	è®¾ç½®textä¸drawableçš„é—´è·ï¼Œæ˜¯ä¸drawableLeftã€ drawableRightã€drawableTopã€drawableBottomä¸€èµ·ä½¿ç”¨ã€‚
 
-6.LinearLayoutÁ÷Ë®ĞÍ²¼¾Ö£¬Í¨¹ıandroid:orientatiionÊôĞÔÀ´ÉèÖÃ²¼¾ÖÑùÊ½£¨Ë®Æ½»òÊÇ´¹Ö±£©
+103.æœ‰å…³ButterKnifeçš„ä»‹ç»ï¼š(@BindView)
+	http://www.jianshu.com/p/1d80c7dd01ba
+	
 
+104.å…³äºAndroidçš„åŠ¨ç”»animation:(è¿™æ˜¯é™æ€å†™æ³•,åŠ¨æ€å†™æ³•å‚ç…§82.)
+	å‚è€ƒ:http://blog.csdn.net/harvic880925/article/details/39996643
+	æœ‰å››ç§ç±»å‹:(å­˜æ”¾åœ¨res/anim ç›®å½•ä¸‹)
+		<alpha></alpha> å˜æ¢é€æ˜åº¦
+		<scale></scale> æ¸å˜å°ºå¯¸ä¼¸ç¼©
+		<translate></translate> å¹³ç§»æ•ˆæœ
+		<rotate></rotate> æ—‹è½¬æ•ˆæœ
+		
+	ä¸»è¦çš„å±æ€§
+		å…±åŒ:
+			android:duration= åŠ¨ç”»çš„æŒç»­æ—¶é—´(ms)
+			android:fillAfter= æ˜¯(true)å¦(false)ä¿æŒåŠ¨ç”»ç»“æŸæ—¶çš„çŠ¶æ€
+			android:fillBefore= åŠ¨ç”»ç»“æŸå æ˜¯(true)å¦(false)è¿˜åŸå›åŠ¨ç”»æ‰§è¡Œå‰çš„çŠ¶æ€
+			android:fillEnable= åŠ¨ç”»ç»“æŸå æ˜¯(true)å¦(false)è¿˜åŸåˆ°åˆå§‹åŒ–çŠ¶æ€
+			android:repeatCount= åŠ¨ç”»æ•ˆæœé‡å¤æ¬¡æ•°
+			android:repeatMode= é‡å¤ç±»å‹ reverse--å€’æ”¾  restart--é‡æ–°æ’­æ”¾
+			android:interpolator= è®¾ç½®æ’å€¼å™¨ï¼Œç”¨äºå®šä¹‰å¼¹è·³æ•ˆæœç­‰
+---------------------------------------------------------------------------
+		alpha:
+			android:fromAlpha= å¼€å§‹é€æ˜åº¦ 0â€”â€”1 0è¡¨ç¤ºå®Œå…¨é€æ˜			    android:toAlpha= ç»“æŸé€æ˜åº¦
+---------------------------------------------------------------------------
+		scale:	
+			android:fromXScale= å¼€å§‹Xæ–¹å‘ä¸Šç¼©æ”¾æ¯”ä¾‹ï¼Œ0.5ç¼©å°ä¸€å€,1.0æ— å˜åŒ–,2.0æ‰©å¤§ä¸€å€
+			android:toXScale= ç»“æŸæ—¶Xæ–¹å‘ä¸Šç¼©æ”¾æ¯”ä¾‹
+			android:pivotX= ç¼©æ”¾èµ·ç‚¹çš„Xåæ ‡ï¼Œä»ç¼©æ”¾æ§ä»¶çš„å·¦ä¸Šè§’ä¸º(0,0)ç®—èµ·,å¯å¡«ç™¾åˆ†æ¯”
+			...YåŒç†
+---------------------------------------------------------------------------
+		translate:
+			android:fromXDelta= èµ·å§‹ç‚¹Xåæ ‡
+			android:toXDelta= ç»“æŸç‚¹Xåæ ‡
+			...YåŒç†
+---------------------------------------------------------------------------
+		rotate:
+			android:fromDegrees= èµ·å§‹è§’åº¦
+			android:toDegrees= ç»“æŸè§’åº¦
+		 	android:pivotX= æ—‹è½¬åæ ‡
