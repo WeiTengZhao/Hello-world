@@ -13,6 +13,7 @@
   android:drawablePadding：	设置text与drawable的间距，是与drawableLeft、 drawableRight、drawableTop、drawableBottom一起使用。
 
 103.有关ButterKnife的介绍：(@BindView)
+	详见107.
 	http://www.jianshu.com/p/1d80c7dd01ba
 	
 
@@ -35,7 +36,8 @@
 			android:interpolator= 设置插值器，用于定义弹跳效果等
 ---------------------------------------------------------------------------
 		alpha:
-			android:fromAlpha= 开始透明度 0——1 0表示完全透明			    android:toAlpha= 结束透明度
+			android:fromAlpha= 开始透明度 0—1 (0表示完全透明)
+			android:toAlpha= 结束透明度
 ---------------------------------------------------------------------------
 		scale:	
 			android:fromXScale= 开始X方向上缩放比例，0.5缩小一倍,1.0无变化,2.0扩大一倍
@@ -52,3 +54,127 @@
 			android:fromDegrees= 起始角度
 			android:toDegrees= 结束角度
 		 	android:pivotX= 旋转坐标
+
+105.AsycTask的基本用法:(参照：http://blog.csdn.net/guolin_blog/article/details/11711405) 73.写过
+	1.AsycTask主要用于从子线程切换到UI线程，对UI进行操作;
+	2.AsycTask是抽象类，因此要新建类来继承使用，
+		例如: public class DownLoad extend AsycTask<Params,Progress,Result> {}
+			有3个泛型参数，意义分别为：
+				Params:要传递给子线程中使用的参数，没有定义为Void;
+				Progress:显示子线程执行的进度，不用显示定义为Void;
+				Result:子线程执行结束后返回给主线程UI的值;
+	3.AsycTask的详细使用:
+		主要需要重写四个方法：
+				(1) onPreExecute()
+					后台任务执行之前调用，主要用来初始化显示内容
+				(2)doInBackground(Params..)
+					具体在子线程中执行的过程，可以传入定义时需要在子线程中使用的参数Params，执行完毕后若Result 不为Void，则可以通过return Result 把结果返回。
+					当要显示子线程执行进度时，可以在这个方法中调用publishProgress(Progress..) 将当前的进度传递出去
+					这个方法的内容都是子线程操作，所以不能对UI进行操作
+				(3)onProgressUpdate(Progress...)
+					publicshProgress()方法传来的值在此处接收处理，利用该值更新进度监听的UI。
+				(4) onPostExecute(Result)
+					接收doInBackground()方法返回的值，对UI进行操作。					
+
+106.获取程序的版本信息:
+	 通过定义PackageInfo getPackageInfo()方法获取，主要要写的内容有：
+		1.获取实例，通过getPackageManager()获取;
+		2.获取版本信息，通过getPackageInfo()获取;
+		3.在显示版本信息的TextView对待setText方法中调用 this.getPackage().getversionName();
+			示例：
+				/**
+				@ Description: 测试能否获取程序的版本信息
+				**/
+				public class MainActivity extends AppCompatActivity {
+				    /**
+				    @ Description :用于获取版本信息的方法
+				    **/
+				    public PackageInfo getPackageInfo() {
+					PackageInfo info = null;//定义对象，存放版本信息
+					try {
+					       /**
+					       @ Description :getPackManager()获取对象的实例,getPackgeInfo()获取版本信息；完成对象实例化
+					       @ getPackageName():表示获取当前类的包名
+					       @ 0:表示获取版本的信息
+					       **/
+					    info = getPackageManager().getPackageInfo(getPackageName(),0);
+					}catch (PackageManager.NameNotFoundException e) {
+					    e.printStackTrace();
+					}
+					if(info == null) {
+					    info = new PackageInfo();
+					}
+					return info;
+				    }	
+			-------------------------------------------------------------------
+				调用：
+				        tv.setText(this.getPackageInfo().versionName);	
+
+	****附录，判断当前版本是否兼容系统****
+		public static boolean isMethodsCompat(int VersionCode) {
+			int currentVersion = android.os.Build.VERSION.SDK_INT;//获取系统版本
+			return currentVersion >= VersionCode;//系统版本大于程序版本说明兼容
+		}
+
+107.ButterKnife 注解替代findViewById的使用方法:
+	1.添加依赖:
+		(1)在App对应的.gradle中:
+			dependencies {
+				classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+			}
+		(2)在Project对应的.gradle中:
+			apply plugin: 'com.neenbedankt.android-apt'
+				dependencies {
+					compile 'com.jakewharton:butterknife:8.0.1'
+				  	apt 'com.jakewharton:butterknife-compiler:8.0.1'
+				}
+	2.在所要引用的Activity中声明注解:
+			@BindView( 对应View的Id号 ) View的类型 对象名(自定义)
+			示例：@BindView(R.id.text)  TextView   tv
+	3.在要使用的view的方法进行绑定(一般直接在onCreate()方法中直接进行绑定):
+			ButterKnife.bind(this);
+----------------------------------------------使用ButterKnife Zelezny插件一键声明注解-------------------------
+		安装好插件后，向上面说的先添加依赖
+		鼠标点的onCreate()方法中引入的布局id (即setContentView(R.id.activity_main)上)右键Generate...——Generate ButterKnife Injection..
+
+
+108.设置布局的渐变背景: 2016-8-24 只写了部分，详细：
+						http://keeganlee.me/post/android/20150830
+	(1)在drawable中创建一个新的shape，主要包含以下内容：
+		<?xml version="1.0" encoding="utf-8"?>  
+			<shape  
+			    xmlns:android="http://schemas.android.com/apk/res/android"  
+			    android:shape=["rectangle" | "oval" | "line" | "ring"] >  //形状: 矩形 | 椭圆 | 线 | 圆 
+			    <corners  
+				android:radius="integer"  
+				android:topLeftRadius="integer"  
+				android:topRightRadius="integer"  
+				android:bottomLeftRadius="integer"  
+				android:bottomRightRadius="integer" /> //圆角度数，只对矩形有效
+			    <gradient  //设置渐变色
+				android:angle="integer"  //渐变角度，45倍数,45从下往上，0从左往右
+				android:centerX="integer"  //渐变中心点坐标
+				android:centerY="integer"  //中心点坐标用于放射渐变
+				android:centerColor="integer"  //中间颜色
+				android:endColor="color"  //结束颜色
+				android:gradientRadius="integer"  
+				android:startColor="color" //开始颜色  
+				android:type=["linear" | "radial" | "sweep"]  //渐变类型：线性 、 放射 、扫描
+				android:useLevel=["true" | "false"] />  
+			    <padding  
+				android:left="integer"  
+				android:top="integer"  
+				android:right="integer"  
+				android:bottom="integer" />  
+			    <size  
+				android:width="integer"  
+				android:height="integer" />  
+			    <solid  
+				android:color="color" />  
+			    <stroke  
+				android:width="integer"  
+				android:color="color"  
+				android:dashWidth="integer"  
+				android:dashGap="integer" />  
+			</shape>  
+		
