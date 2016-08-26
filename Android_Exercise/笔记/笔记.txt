@@ -178,3 +178,6 @@
 				android:dashGap="integer" />  
 			</shape>  
 		
+109.在XML中设置Button背景为透明：
+	透明:android:background = "#00000000" //8个0,或者00FFFFFF
+	半透明 : android:background = "#e0000000" //一个e7个0
