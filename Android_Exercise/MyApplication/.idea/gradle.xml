@@ -3,9 +3,8 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="LOCAL" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="C:\Program Files\Android\Android Studio\gradle\gradle-2.10" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -15,13 +14,21 @@
             <option value="$PROJECT_DIR$/brocastbestpractice" />
             <option value="$PROJECT_DIR$/brocasttest2" />
             <option value="$PROJECT_DIR$/filepersistencetest" />
+            <option value="$PROJECT_DIR$/fragmenttest" />
             <option value="$PROJECT_DIR$/listviewtest" />
             <option value="$PROJECT_DIR$/networktest" />
             <option value="$PROJECT_DIR$/networktest-httpclient" />
             <option value="$PROJECT_DIR$/servicebestpractice" />
             <option value="$PROJECT_DIR$/servicetest" />
             <option value="$PROJECT_DIR$/sharedpreferences" />
+            <option value="$PROJECT_DIR$/testeditsearch" />
+            <option value="$PROJECT_DIR$/testfengzhuang" />
             <option value="$PROJECT_DIR$/testlayout" />
+            <option value="$PROJECT_DIR$/testnohttp" />
+            <option value="$PROJECT_DIR$/testsearch" />
+            <option value="$PROJECT_DIR$/testsearchview" />
+            <option value="$PROJECT_DIR$/testshapedrawable" />
+            <option value="$PROJECT_DIR$/testversioninfo" />
             <option value="$PROJECT_DIR$/uibestpractice" />
             <option value="$PROJECT_DIR$/uicustomviews" />
             <option value="$PROJECT_DIR$/uilayouttest" />
@@ -39,13 +46,21 @@
             <option value="$PROJECT_DIR$/brocastbestpractice" />
             <option value="$PROJECT_DIR$/brocasttest2" />
             <option value="$PROJECT_DIR$/filepersistencetest" />
+            <option value="$PROJECT_DIR$/fragmenttest" />
             <option value="$PROJECT_DIR$/listviewtest" />
             <option value="$PROJECT_DIR$/networktest" />
             <option value="$PROJECT_DIR$/networktest-httpclient" />
             <option value="$PROJECT_DIR$/servicebestpractice" />
             <option value="$PROJECT_DIR$/servicetest" />
             <option value="$PROJECT_DIR$/sharedpreferences" />
+            <option value="$PROJECT_DIR$/testeditsearch" />
+            <option value="$PROJECT_DIR$/testfengzhuang" />
             <option value="$PROJECT_DIR$/testlayout" />
+            <option value="$PROJECT_DIR$/testnohttp" />
+            <option value="$PROJECT_DIR$/testsearch" />
+            <option value="$PROJECT_DIR$/testsearchview" />
+            <option value="$PROJECT_DIR$/testshapedrawable" />
+            <option value="$PROJECT_DIR$/testversioninfo" />
             <option value="$PROJECT_DIR$/uibestpractice" />
             <option value="$PROJECT_DIR$/uicustomviews" />
             <option value="$PROJECT_DIR$/uilayouttest" />

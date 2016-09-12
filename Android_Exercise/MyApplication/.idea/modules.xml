@@ -9,13 +9,21 @@
       <module fileurl="file://$PROJECT_DIR$/brocastbestpractice/brocastbestpractice.iml" filepath="$PROJECT_DIR$/brocastbestpractice/brocastbestpractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/brocasttest2/brocasttest2.iml" filepath="$PROJECT_DIR$/brocasttest2/brocasttest2.iml" />
       <module fileurl="file://$PROJECT_DIR$/filepersistencetest/filepersistencetest.iml" filepath="$PROJECT_DIR$/filepersistencetest/filepersistencetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fragmenttest/fragmenttest.iml" filepath="$PROJECT_DIR$/fragmenttest/fragmenttest.iml" />
       <module fileurl="file://$PROJECT_DIR$/listviewtest/listviewtest.iml" filepath="$PROJECT_DIR$/listviewtest/listviewtest.iml" />
       <module fileurl="file://$PROJECT_DIR$/networktest/networktest.iml" filepath="$PROJECT_DIR$/networktest/networktest.iml" />
       <module fileurl="file://$PROJECT_DIR$/networktest-httpclient/networktest-httpclient.iml" filepath="$PROJECT_DIR$/networktest-httpclient/networktest-httpclient.iml" />
       <module fileurl="file://$PROJECT_DIR$/servicebestpractice/servicebestpractice.iml" filepath="$PROJECT_DIR$/servicebestpractice/servicebestpractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/servicetest/servicetest.iml" filepath="$PROJECT_DIR$/servicetest/servicetest.iml" />
       <module fileurl="file://$PROJECT_DIR$/sharedpreferences/sharedpreferences.iml" filepath="$PROJECT_DIR$/sharedpreferences/sharedpreferences.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testeditsearch/testeditsearch.iml" filepath="$PROJECT_DIR$/testeditsearch/testeditsearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testfengzhuang/testfengzhuang.iml" filepath="$PROJECT_DIR$/testfengzhuang/testfengzhuang.iml" />
       <module fileurl="file://$PROJECT_DIR$/testlayout/testlayout.iml" filepath="$PROJECT_DIR$/testlayout/testlayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testnohttp/testnohttp.iml" filepath="$PROJECT_DIR$/testnohttp/testnohttp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testsearch/testsearch.iml" filepath="$PROJECT_DIR$/testsearch/testsearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testsearchview/testsearchview.iml" filepath="$PROJECT_DIR$/testsearchview/testsearchview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testshapedrawable/testshapedrawable.iml" filepath="$PROJECT_DIR$/testshapedrawable/testshapedrawable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testversioninfo/testversioninfo.iml" filepath="$PROJECT_DIR$/testversioninfo/testversioninfo.iml" />
       <module fileurl="file://$PROJECT_DIR$/uibestpractice/uibestpractice.iml" filepath="$PROJECT_DIR$/uibestpractice/uibestpractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/uicustomviews/uicustomviews.iml" filepath="$PROJECT_DIR$/uicustomviews/uicustomviews.iml" />
       <module fileurl="file://$PROJECT_DIR$/uilayouttest/uilayouttest.iml" filepath="$PROJECT_DIR$/uilayouttest/uilayouttest.iml" />

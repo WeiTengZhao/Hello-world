@@ -118,11 +118,11 @@
 
 107.ButterKnife 注解替代findViewById的使用方法:
 	1.添加依赖:
-		(1)在App对应的.gradle中:
+		(1)在Project对应的.gradle中:
 			dependencies {
 				classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 			}
-		(2)在Project对应的.gradle中:
+		(2)在App对应的.gradle中:
 			apply plugin: 'com.neenbedankt.android-apt'
 				dependencies {
 					compile 'com.jakewharton:butterknife:8.0.1'
@@ -181,3 +181,70 @@
 109.在XML中设置Button背景为透明：
 	透明:android:background = "#00000000" //8个0,或者00FFFFFF
 	半透明 : android:background = "#e0000000" //一个e7个0
+
+110.EditText中:
+	设置 android:imeOptions = "actionSearch"  可以将手机键盘Enter键变为搜索键
+		监听该键盘上的按钮被点击：
+			search_edit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+			@Override
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				if(actionId == EditorInfo.IME_ACTION_SEARCH) { //侦听键盘上的搜索搜索按键 点击状态
+					Log.d("GAGAGAGA","Searching!");	//响应的事件
+				}
+				return false;
+			}
+		});
+
+111.点击Button隐藏手机键盘：
+	在Button点击事件中写:
+		//隐藏键盘
+		InputMethodManager imm = (InputMethodManager) MyApplication.getInstance().getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(search_edit.getWindowToken(),0);
+
+112.通过
+	android:minWidth= 
+	android:minHight=
+		可以设置Button边框属性
+
+113.GridView的屏幕适配：
+	    WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);  //获取WindowManager
+            int wigth = wm.getDefaultDisplay().getWidth();
+            AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(wigth/3,wigth/3);
+            convertview.setLayoutParams(layoutParams);
+
+
+114.Session 'app': Error Launching activity 解决办法：
+	禁用Instant Run
+	Setting——Build, Execution, Deployment > Instant Run
+
+115.Picasso使用方法：
+	1.在APP相应的build添加:
+		compile 'com.squareup.picasso:picasso:2.5.2'
+	2.在要加载图片的Adapter添加:
+		Picasso.with(mContext).load(dataBean.getCover_url()).into(viewHolder.itemImg);
+
+116.封装好的NoHttp的基本盘使用方法：（原始方法见 98. ）
+	将ShaoU/Nohttp的内容添加到项目中，最好在一个新建的包下
+	然后再所要使用的Activity的.java中：
+		1.添加用作区分的 WHAT 值
+		2.在发起请求的位置 onCreate或者onClick方法 中创建 request对象、 调用CallServer接口
+			例如：
+				 public void onClick(View v) {
+					Request<String> request = NoHttp.createStringRequest("https://www.baidu.com/", RequestMethod.GET);//创建请求
+				//        request.add("wa","wa");//添加参数
+					CallServer.getInstance().add(this,request,callBack,WHAT,true,false,false);
+				}
+		3.实现CallServer接口：（一般紧接在上面那串的后面）
+			例如：
+				 private HttpCallBack<String> callBack = new HttpCallBack<String>() {
+					@Override
+					public void onSucceed(int what, Response<String> response) {
+					    tv.setText(response.get());
+					}
+
+					@Override
+					public void onFailed(int what, Response<String> response) {
+
+					}
+				    };
+			

@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 
+
 public class MainActivity extends Activity {
     private TextView textView;
     private Button button;
@@ -69,7 +70,7 @@ public class MainActivity extends Activity {
         public void run() {
             try {
                 HttpClient httpClient = new DefaultHttpClient(); //通过DefaultClient创建实例HttpClient
-                HttpGet httpGet = new HttpGet("http://192.168.56.1:8080/get_data.json");//创建HttpGet对象
+                HttpGet httpGet = new HttpGet("http://school.wojia99.com/public/index.php?d=android&c=news&m=list4&catid=4");//创建HttpGet对象
                 HttpResponse httpResponse = httpClient.execute(httpGet);//获取Response对象包含响应的返回信息
                 if (httpResponse.getStatusLine().getStatusCode() == 200 ) { //判断是否得到响应
                     HttpEntity entity = httpResponse.getEntity();//通过entity获取字符串
@@ -98,8 +99,9 @@ public class MainActivity extends Activity {
         List<App> appList = gson.fromJson(response, new TypeToken<List<App>>(){}.getType()); //JSON数组通过TypeToken对象传入gson.fronJson方法中，通过Json方法，我们可以将JSON数据直接转成类App的对象
         for (App app:appList) {
             Log.d("GSON","id is :" + app.getId());
-            Log.d("GSON","name is :" + app.getName());
-            Log.d("GSON","Version is :" + app.getVersion());
+            Log.d("GSON","AddTime is :" + app.getAddtime());
+            Log.d("GSON","Title is :" + app.getTitle());
+            Log.d("GSON","Thumb is :" + app.getThumb());
         }
     }
 
