@@ -181,3 +181,17 @@
 109.在XML中设置Button背景为透明：
 	透明:android:background = "#00000000" //8个0,或者00FFFFFF
 	半透明 : android:background = "#e0000000" //一个e7个0
+
+110.Android Studio 打包jar包的方法：
+	1.在要打包的app目录的 build.gradle 文件末尾添加：
+		task makeJar(type: Copy) {
+    			delete 'build/libs/mysdk.jar'
+	    		from('build/intermediates/bundles/release/')
+	    		into('build/libs/')
+	    		include('classes.jar')
+	   		rename ('classes.jar', 'mysdk.jar')
+		}
+
+		makeJar.dependsOn(build)	
+		//在终端执行生成JAR包
+		// gradlew makeJar
