@@ -215,14 +215,16 @@ public class News_List extends AppCompatActivity implements AbsListView.OnScroll
 
         @Override
         public void onSucceed(int what, Response<String> response) {
-
+            Toast.makeText(News_List.this,response.get(),Toast.LENGTH_SHORT).show();
             parseJSONWithGSON(response.get());
         }
 
         @Override
-        public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+        public void onFailed(int what, Response<String> response) {
 
         }
+
+
 
         @Override
         public void onFinish(int what) {

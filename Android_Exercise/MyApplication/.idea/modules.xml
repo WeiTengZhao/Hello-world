@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/brocastbestpractice/brocastbestpractice.iml" filepath="$PROJECT_DIR$/brocastbestpractice/brocastbestpractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/brocasttest2/brocasttest2.iml" filepath="$PROJECT_DIR$/brocasttest2/brocasttest2.iml" />
       <module fileurl="file://$PROJECT_DIR$/filepersistencetest/filepersistencetest.iml" filepath="$PROJECT_DIR$/filepersistencetest/filepersistencetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fragmenttest/fragmenttest.iml" filepath="$PROJECT_DIR$/fragmenttest/fragmenttest.iml" />
       <module fileurl="file://$PROJECT_DIR$/listviewtest/listviewtest.iml" filepath="$PROJECT_DIR$/listviewtest/listviewtest.iml" />
       <module fileurl="file://$PROJECT_DIR$/networktest/networktest.iml" filepath="$PROJECT_DIR$/networktest/networktest.iml" />
       <module fileurl="file://$PROJECT_DIR$/networktest-httpclient/networktest-httpclient.iml" filepath="$PROJECT_DIR$/networktest-httpclient/networktest-httpclient.iml" />
