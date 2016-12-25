@@ -4,9 +4,10 @@ package com.example.shao.networktest_httpclient;
  * Created by Shao on 2016/8/8.
  */
 public class App {
-    String id ;
-    String version;
-    String name;
+    String id;
+    String addtime;
+    String title;
+    String thumb;
 
     public String getId() {
         return id;
@@ -16,19 +17,27 @@ public class App {
         this.id = id;
     }
 
-    public String getVersion() {
-        return version;
+    public String getAddtime() {
+        return addtime;
     }
 
-    public void setVersion(String version) {
-        this.version = version;
+    public void setAddtime(String addtime) {
+        this.addtime = addtime;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
     }
 }

@@ -5,9 +5,15 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
+<<<<<<< HEAD
         applicationId "com.test.fragmenttest"
         minSdkVersion 14
         targetSdkVersion 24
+=======
+        applicationId "com.example.shao.fragmenttest"
+        minSdkVersion 15
+        targetSdkVersion 23
+>>>>>>> e77b77084abad1b7da5280cfb9d1c5d7142e1005
         versionCode 1
         versionName "1.0"
     }

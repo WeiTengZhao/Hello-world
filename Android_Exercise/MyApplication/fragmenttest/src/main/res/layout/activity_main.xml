@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -20,4 +21,29 @@
         android:layout_weight="1"
         android:name="com.test.fragmenttest.RightFragment"
         />
+=======
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    tools:context="com.example.shao.fragmenttest.MainActivity">
+
+    <fragment
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:id="@+id/left_frgment"
+        tools:layout="@layout/left_fragment" />
+        <!--android:name="com.example.shao.LeftFrgment"-->
+
+    <fragment
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:id = "@+id/right_frgment"
+        tools:layout = "@layout/right_fragment"
+        />
+
+>>>>>>> e77b77084abad1b7da5280cfb9d1c5d7142e1005
 </LinearLayout>

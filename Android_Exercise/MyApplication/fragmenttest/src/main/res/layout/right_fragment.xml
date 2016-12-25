@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:id="@+id/right_fragment"
     android:background="#66ccff"
     >
@@ -15,4 +16,14 @@
         android:textSize="30sp"
         />
 
+=======
+    android:background="#66ccff"
+    >
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="This is the right Fragment!"
+    android:textSize="30sp"
+    />
+>>>>>>> e77b77084abad1b7da5280cfb9d1c5d7142e1005
 </LinearLayout>

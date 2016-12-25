@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 include ':app', ':uiweidgettest', ':testlayout', ':uilayouttest', ':uicustomviews', ':listviewtest', ':uisizetest', ':uibestpractice', ':broadcasttest', ':brocasttest2', ':brocastbestpractice', ':filepersistencetest', ':sharedpreferences', ':androidthreadtest', ':servicetest', ':servicebestpractice', ':webviewtest', ':networktest', ':networktest-httpclient', ':fragmenttest'
+=======
+include ':app', ':uiweidgettest', ':testlayout', ':uilayouttest', ':uicustomviews', ':listviewtest', ':uisizetest', ':uibestpractice', ':broadcasttest', ':brocasttest2', ':brocastbestpractice', ':filepersistencetest', ':sharedpreferences', ':androidthreadtest', ':servicetest', ':servicebestpractice', ':webviewtest', ':networktest', ':networktest-httpclient', ':testnohttp', ':fragmenttest', ':testversioninfo', ':testshapedrawable', ':testsearch', ':testsearchview', ':testeditsearch', ':testfengzhuang'
+>>>>>>> e77b77084abad1b7da5280cfb9d1c5d7142e1005

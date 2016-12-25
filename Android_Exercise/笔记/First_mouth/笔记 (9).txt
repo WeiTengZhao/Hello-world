@@ -1177,6 +1177,26 @@ public class MainActivity extends AppCompatActivity {
 		    Log.d("GSON","Version is :" + app.getVersion());
 		}
     }
+-------------------------------------
+	2016-09-02补充:解析嵌套类型如:
+			public class A {
+			  public String a;
+
+			  class B {
+
+			    public String b;
+
+			    public B() {
+			      // No args constructor for B
+			    }
+			  }
+			}
+		类B设置为public static
+		之后再解析函数中写：
+			Gson gson = new Gson();  
+			java.lang.reflect.Type type = new TypeToken<JsonBean>() {}.getType(); JsonBean jsonBean = gson.fromJson(json, type);</span>  
+			JsonBean jsonBean = gson.fromJson(json, type);
+		再通过JsonBean获取数据
 
 96.两种for循环的转换：
 	for(int i = 0; i < appList.size();i++) {
@@ -1223,7 +1243,8 @@ public class MainActivity extends AppCompatActivity {
 ××××××××××××××××××××××××××××××记得要去Mainfest.xml中注册新创建的Application:
 						<application
 							android:name = ".MyApplication"
-						></application>
+						>
+						</application>
 
 
 三、在相应的MainActivity中使用:

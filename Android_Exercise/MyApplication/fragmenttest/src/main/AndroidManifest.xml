@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.test.fragmenttest">
+=======
+    package="com.example.shao.fragmenttest" >
+>>>>>>> e77b77084abad1b7da5280cfb9d1c5d7142e1005
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+<<<<<<< HEAD
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+=======
+        android:theme="@style/AppTheme" >
+        <activity android:name=".MainActivity" >
+>>>>>>> e77b77084abad1b7da5280cfb9d1c5d7142e1005
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
