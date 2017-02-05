@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="bcf5f8f9-7dbb-408f-8ea7-16730b1d84e2" name="Apache2" url="http://localhost:8033/shao">
+        <fileTransfer port="0" mountedRoot="E:\Shao\Apache\httpd-2.4.23-x64-vc11\Apache24\htdocs\shao\new" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
